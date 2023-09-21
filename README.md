@@ -19,9 +19,13 @@
 - おすすめのトレーニングを紹介する時
 - 行ったトレーニングを投稿する時(日記のようなもの)
 ## 設計書
- 実装機能リスト
-> https://docs.google.com/spreadsheets/d/1pS_6PR93Fgxn8i6bVbiRgjvtvYhOgdIHasfyJwWDuyw/edit?usp=drive_link
-​
+[実装機能リスト](https://docs.google.com/spreadsheets/d/1pS_6PR93Fgxn8i6bVbiRgjvtvYhOgdIHasfyJwWDuyw/edit?usp=drive_link)<br>
+[テーブル定義書](https://docs.google.com/spreadsheets/d/1Tn0VzOWeL8379oKc1DL3i1fjqwR3CkRocsDzG_ZF4d4/edit?usp=drive_link)<br>
+[ワイヤーフレーム](https://drive.google.com/file/d/1SPJkFxm516WSFjjnGZHNj2Fa5sZPfBVJ/view?usp=drive_link)<br>
+[WBS](https://docs.google.com/spreadsheets/d/1VtbpwUdN42POOawWL5ohAphxGm8zTsZhp-tqEhjdCgE/edit?usp=drive_link)<br>
+[アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1uWWfltW_loDgggp8UlDDzgyA5a24iO6FJ0uqKwXTtrY/edit?usp=drive_link)<br>
+[ER図](https://drive.google.com/file/d/1hSUPpIJSx352voRIQFscA9lwXuyY2MdS/view?usp=drive_link)<br>
+[画面遷移図](https://drive.google.com/file/d/1NGRlG798Yoe4S8nwK1lUfUeaOpFeQPYV/view?usp=drive_link)<br>
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
