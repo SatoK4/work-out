@@ -12,11 +12,30 @@
 
   <body>
     <header>
-      <!--logo-->
-      <!--ユーザーアイコン&名前-->
-      <!--トレーニング一覧へ-->
-      <!--つぶやき一覧へ-->
-      <!--検索画面へ-->
+      <nav>
+        <!--logo-->
+        <% if admin_signed_in? %>
+          <!--ユーザーアイコン&名前-->
+          <ul>
+            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+          </ul>
+        <% elsif customer_signed_in? %>
+          <!--ユーザーアイコン&名前-->
+          <ul>
+            <li><%= link_to "マイページ", customer_path %></li>
+            <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+          </ul>
+        <% else %>
+          <!--デフォルト画像&名前(ログインしてください)-->
+          <ul>
+            <li><%= link_to "新規登録", new_customer_registration_path %></li>
+            <li><%= link_to "ログイン", new_customer_session_path %></li>
+          </ul>
+        <% end %>
+        <!--トレーニング一覧へ-->
+        <!--つぶやき一覧へ-->
+        <!--検索画面へ-->
+      </nav>
     </header>
     <main>
       <%= yield %>
