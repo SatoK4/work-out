@@ -1,2 +1,7 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<%= render 'public/shared/profile', customer: @customer %>
+<h3><%= @customer.nickname %>のつぶやき</h3>
+
+<% @whispers.each do |whisper| %>
+<!--各ユーザーのつぶやき内容を表示-->
+  <%= whisper.whisper %>
+<% end %>
