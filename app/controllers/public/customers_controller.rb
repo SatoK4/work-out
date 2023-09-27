@@ -3,8 +3,10 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @whispers = @customer.whispers.all
   end
-  
+
   def workout
+    @customer = Customer.find(params[:id])
+    @workouts = @customer.workouts.all
   end
 
   def edit

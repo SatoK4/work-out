@@ -1,0 +1,14 @@
+<%= render 'public/shared/profile', customer: @customer %>
+<h3><%= @customer.nickname %>のトレーニング</h3>
+
+<!--トレーニングを投稿しているか確認-->
+<% if @workouts.present? %>
+  <!--投稿していた場合-->
+  <% @workouts.each do |workout| %>
+    <%= workout.name %>
+    <%= workout.introduction %>
+  <% end %>
+<% else %>
+  <!--投稿していなかった場合-->
+  <%= @customer.nickname %>さんはまだトレーニングを投稿していません。
+<% end %>
