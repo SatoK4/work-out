@@ -1,2 +1,10 @@
-<h1>Public::Workouts#index</h1>
-<p>Find me in app/views/public/workouts/index.html.erb</p>
+<h3>みんなのトレーニング</h3>
+<%= link_to new_workout_path do %>
+  新規登録画面に移動
+  <!--＋ボタンに変更-->
+<% end %>
+<!--%= @workouts.each do |workout| %>-->
+<!--イメージ画像＆ユーザー名-->
+<!--  %= workout.name %>-->
+<!--  %= workout.introduction %>-->
+<!--% end %>-->
