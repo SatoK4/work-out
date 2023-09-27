@@ -1,7 +1,13 @@
 <%= render 'public/shared/profile', customer: @customer %>
 <h3><%= @customer.nickname %>のつぶやき</h3>
 
-<% @whispers.each do |whisper| %>
-<!--各ユーザーのつぶやき内容を表示-->
-  <%= whisper.whisper %>
+<!--ユーザーがつぶやいているか確認-->
+<% if @whispers.present? %>
+  <!--つぶやいている場合、各ユーザーのつぶやき内容を表示-->
+  <% @whispers.each do |whisper| %>
+    <%= whisper.whisper %>
+  <% end %>
+<% else %>
+  <!--つぶやいていない場合-->
+  <%= @customer.nickname %>さんはまだつぶやいていません。
 <% end %>
