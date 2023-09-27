@@ -1,0 +1,17 @@
+<!--ユーザーアイコン-->
+<%= customer.nickname %>
+
+<!--自己紹介文があれば表示-->
+<% if customer.self_introduction.present? %>
+    <%= customer.self_introduction %>
+<% end %>
+
+<!--自身のユーザーページであれば、プロフィール編集ボタンを表示-->
+<% if customer.id == current_customer.id %>
+    <%= link_to "編集", edit_customer_path %>
+<% end %>
+
+<%= link_to "つぶやき一覧", whispers_customer_path %>
+<%= link_to "トレーニング一覧", workouts_customer_path %>
+<!--%= link_to "ブックマーク一覧", _path %>-->
+<!--%= link_to "トレーニングリスト", _path %>-->
