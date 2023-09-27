@@ -12,11 +12,12 @@ Rails.application.routes.draw do
     resources :workouts,      only:[:new, :create, :edit, :update, :index, :show]
     resources :workout_lists, only:[:create, :index, :show, :destroy]
     # resources :customers, only:[:show]
-    get '/customers/:id/whispers' => 'customers#whisper',         as: "whispers_customer"
-    get '/customers/:id/workouts' => 'customers#workout',         as: "workouts_customer"
+    get '/customers/:id/whispers'     => 'customers#whisper', as: "whispers_customer"
+    get '/customers/:id/workouts'     => 'customers#workout', as: "workouts_customer"
     get '/customers/information/edit' => 'customers#edit',    as: "edit_customer"
     patch '/customers/information'    => 'customers#update',  as: "update_customer"
     get '/customers/unsubscribe',                             as: "unsubscribe_customer"
+    patch '/customers/withdrawal',                            as: "withdrawal_customer"
   end
 
   #管理者用
