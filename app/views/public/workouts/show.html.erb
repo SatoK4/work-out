@@ -1,2 +1,8 @@
-<h1>Public::Workouts#show</h1>
-<p>Find me in app/views/public/workouts/show.html.erb</p>
+<h3>投稿したトレーニングの詳細</h3>
+<!--画像＆ユーザー名-->
+<%= if @workout.customer_id == current_customer.id %>
+  <%= link_to "削除する", workout_path, method: :delete %>
+<% end %>
+
+<%= @workout.name %>
+<%= @workout.introduction %>
