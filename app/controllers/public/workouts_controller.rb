@@ -13,6 +13,7 @@ class Public::WorkoutsController < ApplicationController
   end
 
   def index
+    @workouts = Workout.all
   end
 
   def show
