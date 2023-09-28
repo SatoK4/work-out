@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :whispers,      only:[:new, :create, :index, :show]
     resources :bookmarks,     only:[:create, :index, :destroy]
-    resources :workouts,      only:[:new, :create, :edit, :update, :index, :show, :destroy]
+    resources :workouts,      only:[:new, :create, :index, :show, :destroy]
     resources :workout_lists, only:[:create, :index, :show, :destroy]
     # resources :customers, only:[:show]
     get '/customers/:id/whispers'     => 'customers#whisper', as: "whispers_customer"
