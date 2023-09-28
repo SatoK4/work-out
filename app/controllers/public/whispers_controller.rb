@@ -2,7 +2,7 @@ class Public::WhispersController < ApplicationController
   def new
     @whisper = Whisper.new
   end
-  
+
   def create
     @whisper = Whisper.new(whisper_params)
     if @whisper.save
@@ -13,6 +13,7 @@ class Public::WhispersController < ApplicationController
   end
 
   def index
+    @whispers = Whisper.all
   end
 
   def show
