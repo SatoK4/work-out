@@ -1,6 +1,6 @@
 <h3>何をつぶやきますか？</h3>
 
 <%= form_with model: @whisper do |f| %>
-  <%= f.text_field :whisper, placeholder: "内容を入力してください" %>
+  <%= f.text_field :content, placeholder: "内容を入力してください" %>
   <%= f.submit "つぶやく" %>
 <% end %>

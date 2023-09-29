@@ -5,7 +5,7 @@
 <% if @whispers.present? %>
   <!--つぶやいている場合、各ユーザーのつぶやき内容を表示-->
   <% @whispers.each do |whisper| %>
-    <%= whisper.whisper %>
+    <%= whisper.content %>
   <% end %>
 <% else %>
   <!--つぶやいていない場合-->
