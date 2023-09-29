@@ -16,25 +16,31 @@
         <!--logo-->
         <% if admin_signed_in? %>
           <!--ユーザーアイコン&名前-->
-          <ul>
+          <ul><!--ドロップダウンメニュー-->
             <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
           </ul>
+          <%= link_to "トレーニング一覧", admin_root_path %>
+          <%= link_to "つぶやき一覧", admin_whispers_path %>
+          <%= link_to "ユーザー一覧", admin_customers_path %>
         <% elsif customer_signed_in? %>
           <!--ユーザーアイコン&名前-->
-          <ul>
+          <ul><!--ドロップダウンメニュー-->
             <li><%= link_to "マイページ", workouts_customer_path(current_customer.id) %></li>
             <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
           </ul>
+          <%= link_to "トレーニング一覧", workouts_path %>
+          <%= link_to "つぶやき一覧", whispers_path %>
+          <!--検索画面へ-->
         <% else %>
           <!--デフォルト画像&名前(ログインしてください)-->
-          <ul>
+          <ul><!--ドロップダウンメニュー-->
             <li><%= link_to "新規登録", new_customer_registration_path %></li>
             <li><%= link_to "ログイン", new_customer_session_path %></li>
           </ul>
+          <%= link_to "トレーニング一覧", workouts_path %>
+          <%= link_to "つぶやき一覧", whispers_path %>
+          <!--検索画面へ-->
         <% end %>
-        <!--トレーニング一覧へ-->
-        <!--つぶやき一覧へ-->
-        <!--検索画面へ-->
       </nav>
     </header>
     <main>
