@@ -5,5 +5,6 @@ class Admin::WhispersController < ApplicationController
   end
 
   def show
+    @whisper = Whisper.find(params[:id])
   end
 end
