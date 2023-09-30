@@ -11,7 +11,12 @@
     <% @customers.each do |customer| %>
       <tr>
         <td></td>
-        <td><!--アイコンを表示--><%= customer.nickname %></td>
+        <td>
+          <%= link_to admin_customer_path(customer.id) do %>
+            <!--アイコンを表示-->
+            <%= customer.nickname %>
+          <% end %>
+        </td>
         <td><%= customer.status %></td>
       </tr>
     <% end %>
