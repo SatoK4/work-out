@@ -4,5 +4,5 @@ class Workout < ApplicationRecord
   has_many :workout_tags
   has_many :workout_list_details
   
-  has_one_attached :image
+  mount_uploader :image, ImageUploader
 end

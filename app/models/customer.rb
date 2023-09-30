@@ -11,7 +11,7 @@ class Customer < ApplicationRecord
   has_many :whisper_comments
   has_many :bookmarks
 
-  has_one_attached :image
+  mount_uploader :image, ImageUploader
 
   def status
     if is_deleted == false
