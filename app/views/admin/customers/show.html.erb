@@ -1,2 +1,13 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<!--アイコン&ユーザー名-->
+<table>
+  <tr>
+    <td>自己紹介文</td>
+    <td><%= @customer.self_introduction %></td>
+  </tr>
+  <tr>
+    <td>会員ステータス</td>
+    <td><!--ステータスを変更するボタンを作成--></td>
+  </tr>
+</table>
+<%= link_to "つぶやき一覧へ", admin_customer_whispers_path %>
+<%= link_to "トレーニング一覧へ", admin_customer_workouts_path %>

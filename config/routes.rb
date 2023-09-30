@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     resources :workouts,  only:[:show]
     resources :whispers,  only:[:index, :show]
     resources :customers, only:[:index, :show]
+    get '/:id/whispers' => 'customers#whisper', as: "customer_whispers"
+    get '/:id/workouts' => 'customers#workout', as: "customer_workouts"
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
