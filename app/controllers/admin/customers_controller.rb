@@ -13,5 +13,7 @@ class Admin::CustomersController < ApplicationController
   end
   
   def workout
+    @customer = Customer.find(params[:id])
+    @workouts = Wourkout.all
   end
 end
