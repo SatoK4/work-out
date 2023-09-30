@@ -8,6 +8,8 @@ class Admin::CustomersController < ApplicationController
   end
   
   def whisper
+    @customer = Customer.find(params[:id])
+    @whispers = Whisper.all
   end
   
   def workout

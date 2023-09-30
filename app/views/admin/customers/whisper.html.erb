@@ -1,0 +1,4 @@
+<h3><%= @customer.nickname %>のつぶやき</h3>
+<%= @whispers.each do |whisper| %>
+  <%= whisper.content %>
+<% end %>
