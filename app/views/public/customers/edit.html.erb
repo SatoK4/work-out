@@ -1,7 +1,7 @@
 <h3>会員情報編集画面</h3>
 
 <%= form_with model: @customer, url: update_customer_path, method: :patch do |f| %>
-<!--画像を変更-->
+  <%= f.file_field :image %><!--画像のプレビューを-->
   <table>
     <tr>
       <td><%= f.label :ニックネーム%> </td>
