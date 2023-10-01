@@ -1,4 +1,11 @@
-<!--ユーザーアイコン-->
+<!--アイコンを設定しているか確認-->
+<% if customer.image.present? %>
+<!--設定している場合、表示する-->
+  <%= image_tag customer.image_url(:icon) %>
+<% else %>
+<!--設定していない場合、デフォルト画像を表示する-->
+  <%= image_tag 'no-icon.png', size: "50x50" %>
+<% end %>
 <%= customer.nickname %>
 
 <!--自己紹介文があれば表示-->

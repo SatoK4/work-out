@@ -31,6 +31,6 @@ class Public::CustomersController < ApplicationController
 
   private
   def customer_params
-    params.require(:customer).permit(:nickname, :self_introduction)
+    params.require(:customer).permit(:nickname, :self_introduction, :image)
   end
 end
