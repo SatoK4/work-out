@@ -20,5 +20,9 @@
 
 <%= link_to "つぶやき一覧", whispers_customer_path %>
 <%= link_to "トレーニング一覧", workouts_customer_path %>
-<!--%= link_to "ブックマーク一覧", _path %>-->
-<!--%= link_to "トレーニングリスト", _path %>-->
+
+<!--自身のユーザーページであれば、下記を表示-->
+<% if customer.id == current_customer.id %>
+  <%= link_to "ブックマーク一覧", bookmarks_path %>
+  <%= link_to "トレーニングリスト", workout_lists_path %>
+<% end %>
