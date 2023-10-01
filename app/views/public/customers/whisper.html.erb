@@ -5,6 +5,8 @@
 <% if @whispers.present? %>
   <!--つぶやいている場合、各ユーザーのつぶやき内容を表示-->
   <% @whispers.each do |whisper| %>
+    <%= render 'public/shared/icon', customer: @customer %>
+    <%= @customer.nickname %>
     <%= whisper.content %>
   <% end %>
 <% else %>
