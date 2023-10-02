@@ -1,4 +1,11 @@
 <h3>みんなのつぶやき</h3>
+<%= link_to "新しくつぶやく", new_whisper_path %>
 <!--%= @whispers.each do |whisper| %>-->
-<!--  %= whisper.content %>-->
+  <!--%= render 'public/shared/icon', customer: whisper.customer %>-->
+  <!--% if whisper.image.present?-->
+    <!--%= whisper.images.each do |image| %>-->
+      <!--% image_tag image %>-->
+    <!--% end %>-->
+  <!--% end -->
+  <!--  %= whisper.content %>-->
 <!--% end %>-->
