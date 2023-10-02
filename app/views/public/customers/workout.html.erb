@@ -5,6 +5,8 @@
 <% if @workouts.present? %>
   <!--投稿していた場合-->
   <% @workouts.each do |workout| %>
+    <%= render 'public/shared/icon', customer: @customer %>
+    <%= @customer.nickname %>
     <%= workout.name %>
     <%= workout.introduction %>
   <% end %>
