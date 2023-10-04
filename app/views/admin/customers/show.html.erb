@@ -1,4 +1,5 @@
-<!--アイコン&ユーザー名-->
+<%= render 'admin/shared/large_icon', customer: @customer %>
+<%= @customer.nickname %>
 <table>
   <tr>
     <td>自己紹介文</td>
@@ -6,7 +7,7 @@
   </tr>
   <tr>
     <td>会員ステータス</td>
-    <td><!--ステータスを変更するボタンを作成--></td>
+    <td><%= @customer.status %></td><!--ToDo ステータスを変更するボタンに変更-->
   </tr>
 </table>
 <%= link_to "つぶやき一覧へ", admin_customer_whispers_path %>

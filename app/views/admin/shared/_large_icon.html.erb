@@ -1,0 +1,5 @@
+<% if customer.image.present? %>
+  <%= image_tag customer.image_url(:profile) %>
+<% else %>
+  <%= image_tag "no-icon.png", size: "100x100" %>
+<% end %>
