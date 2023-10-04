@@ -13,7 +13,7 @@
         <td></td>
         <td>
           <%= link_to admin_customer_path(customer.id) do %>
-            <!--アイコンを表示-->
+            <%= render 'admin/shared/icon', customer: customer %>
             <%= customer.nickname %>
           <% end %>
         </td>
