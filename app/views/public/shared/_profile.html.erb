@@ -1,19 +1,14 @@
-<!--アイコンを設定しているか確認-->
 <% if customer.image.present? %>
-<!--設定している場合、表示する-->
-  <%= image_tag customer.image_url(:icon) %>
+  <%= image_tag customer.image_url(:profile) %>
 <% else %>
-<!--設定していない場合、デフォルト画像を表示する-->
-  <%= image_tag 'no-icon.png', size: "50x50" %>
+  <%= image_tag 'no-icon.png', size: "100x100" %>
 <% end %>
 <%= customer.nickname %>
 
-<!--自己紹介文があれば表示-->
 <% if customer.self_introduction.present? %>
     <%= customer.self_introduction %>
 <% end %>
 
-<!--自身のユーザーページであれば、プロフィール編集ボタンを表示-->
 <% if customer.id == current_customer.id %>
     <%= link_to "編集", edit_customer_path %>
 <% end %>
@@ -21,7 +16,6 @@
 <%= link_to "つぶやき一覧", whispers_customer_path %>
 <%= link_to "トレーニング一覧", workouts_customer_path %>
 
-<!--自身のユーザーページであれば、下記を表示-->
 <% if customer.id == current_customer.id %>
   <%= link_to "ブックマーク一覧", bookmarks_path %>
   <%= link_to "トレーニングリスト", workout_lists_path %>
