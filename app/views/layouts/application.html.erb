@@ -15,7 +15,8 @@
       <nav>
         <!--logo-->
         <% if admin_signed_in? %>
-          <!--ユーザーアイコン&名前-->
+          <%= image_tag "no-icon.png", size: "50x50" %>
+          <p>管理アカウント</p>
           <ul><!--ドロップダウンメニュー-->
             <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
           </ul>
@@ -23,7 +24,12 @@
           <%= link_to "つぶやき一覧", admin_whispers_path %>
           <%= link_to "ユーザー一覧", admin_customers_path %>
         <% elsif customer_signed_in? %>
-          <!--ユーザーアイコン&名前-->
+          <% if current_customer.image.present? %>
+            <%= image_tag current_customer.image_url(:icon) %>
+          <% else %>
+            <%= image_tag 'no-icon.png', size: "50x50" %>
+          <% end %>
+          <%= current_customer.nickname %>
           <ul><!--ドロップダウンメニュー-->
             <li><%= link_to "マイページ", workouts_customer_path(current_customer.id) %></li>
             <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
@@ -32,7 +38,8 @@
           <%= link_to "つぶやき一覧", whispers_path %>
           <!--検索画面へ-->
         <% else %>
-          <!--デフォルト画像&名前(ログインしてください)-->
+          <%= image_tag "no-icon.png", size: "50x50" %>
+          <p>ログインしてください</p>
           <ul><!--ドロップダウンメニュー-->
             <li><%= link_to "新規登録", new_customer_registration_path %></li>
             <li><%= link_to "ログイン", new_customer_session_path %></li>
