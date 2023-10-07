@@ -3,5 +3,5 @@ class Whisper < ApplicationRecord
   has_many :bookmarks
   belongs_to :customer
   
-  mount_uploader :image, ImageUploader
+  mount_uploaders :images, ImageUploader
 end

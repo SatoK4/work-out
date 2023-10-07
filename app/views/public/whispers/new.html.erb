@@ -1,6 +1,7 @@
 <h3>何をつぶやきますか？</h3>
 
 <%= form_with model: @whisper do |f| %>
+  <%= f.file_field :images, multiple: true %><!--プレビュー表示を追加-->
   <%= f.text_field :content, placeholder: "内容を入力してください" %>
   <%= f.submit "つぶやく" %>
 <% end %>

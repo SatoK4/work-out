@@ -1,3 +1,9 @@
 <h3>つぶやき詳細</h3>
-<!--ユーザーアイコン＆ユーザー名-->
-<!--%= @whisper.content %>-->
+<%= render 'public/shared/icon', customer: @customer %>
+<%= @customer.nickname %>
+<%= @whisper.content %>
+<% if @whisper.images.present? %>
+  <% @whisper.images.each do |image| %>
+    <%= image_tag image.to_s %>
+  <% end %>
+<% end %>

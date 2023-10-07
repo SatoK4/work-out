@@ -4,10 +4,11 @@ class Public::WhispersController < ApplicationController
   end
 
   def create
-    @whisper = Whisper.new(whisper_params)
+    @whisper = Whisper.new(whisper_params.merge(:customer_id=>current_customer.id))
     if @whisper.save
       redirect_to whisper_path(@whisper.id)
     else
+      flash.now[:alret] = "投稿に失敗しました。"
       render :new
     end
   end
@@ -18,5 +19,11 @@ class Public::WhispersController < ApplicationController
 
   def show
     @whisper = Whisper.find(params[:id])
+    @customer = @whisper.customer
+  end
+
+  private
+  def whisper_params
+    params.require(:whisper).permit(:content, {images: []} )
   end
 end
