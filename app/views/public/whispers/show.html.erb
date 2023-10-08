@@ -1,6 +1,9 @@
 <h3>つぶやき詳細</h3>
 <%= render 'public/shared/icon', customer: @customer %>
 <%= @customer.nickname %>
+<% if @whisper.customer_id == current_customer.id %>
+  <%= link_to "削除する", whisper_path, method: :delete %>
+<% end %>
 <%= @whisper.content %>
 <% if @whisper.images.present? %>
   <% @whisper.images.each do |image| %>

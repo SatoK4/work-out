@@ -22,6 +22,11 @@ class Public::WhispersController < ApplicationController
     @customer = @whisper.customer
   end
 
+  def destroy
+    Whisper.find(params[:id]).delete
+    redirect_to whispers_customer_path(current_customer.id)
+  end
+
   private
   def whisper_params
     params.require(:whisper).permit(:content, {images: []} )
