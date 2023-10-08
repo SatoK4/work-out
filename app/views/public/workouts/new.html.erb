@@ -1,10 +1,10 @@
 <h3>トレーニング新規登録</h3>
 
-<%= form_with model: @workout, url: workouts_path, method: :post do |f| %>
+<%= form_with model: @workout do |f| %>
   <table>
     <tr>
-      <td><%= f.label :"イメージ画像" %></td>
-      <td><%= f.file_field :image, accept: "image/*" %></td>
+      <td><%= f.label :"イメージ画像" %></td><!--プレビューを表示-->
+      <td><%= f.file_field :images, multiple: true %></td>
     </tr>
     <tr>
       <td><%= f.label :"トレーニング名" %></td>

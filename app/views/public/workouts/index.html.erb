@@ -3,8 +3,28 @@
   新規登録画面に移動
   <!--＋ボタンに変更-->
 <% end %>
-<!--%= @workouts.each do |workout| %>-->
-<!--イメージ画像＆ユーザー名-->
-<!--  %= workout.name %>-->
-<!--  %= workout.introduction %>-->
-<!--% end %>-->
+<table>
+  <% @workouts.each do |workout| %>
+    <tr>
+      <td><%= render "public/shared/icon", customer: workout.customer %></td>
+      <td><%= workout.customer.nickname %></td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to workout_path(workout.id) do %>
+          <%= workout.name %>
+        <% end %>
+      </td>
+    </tr>
+    <tr><td><%= workout.introduction %></td></tr>
+    <tr>
+      <td>
+        <% if workout.images.present? %>
+          <% workout.images.each do |image| %>
+            <%= image_tag image.to_s %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

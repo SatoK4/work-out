@@ -4,10 +4,11 @@ class Public::WorkoutsController < ApplicationController
   end
 
   def create
-    @workout = Workout.new(workout_params)
-    if @workout.save
+    @workout = Workout.new(workout_params.merge(:customer_id=>current_customer.id))
+    if @workout.save!
       redirect_to workout_path(@workout.id)
     else
+      flash[:alert] = "投稿に失敗しました。"
       render :new
     end
   end
@@ -22,6 +23,6 @@ class Public::WorkoutsController < ApplicationController
 
   private
   def workout_params
-    params.require(:workout).permit(:name, :introduction, :image)
+    params.require(:workout).permit(:name, :introduction, {images: []} )
   end
 end
