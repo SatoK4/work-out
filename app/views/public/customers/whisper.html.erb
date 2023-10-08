@@ -1,15 +1,32 @@
 <%= render 'public/shared/profile', customer: @customer %>
 <h3><%= @customer.nickname %>のつぶやき</h3>
 
-<!--ユーザーがつぶやいているか確認-->
 <% if @whispers.present? %>
-  <!--つぶやいている場合、各ユーザーのつぶやき内容を表示-->
-  <% @whispers.each do |whisper| %>
-    <%= render 'public/shared/icon', customer: @customer %>
-    <%= @customer.nickname %>
-    <%= whisper.content %>
-  <% end %>
+  <table>
+    <% @whispers.each do |whisper| %>
+      <tr>
+        <td><%= render 'public/shared/icon', customer: @customer %></td>
+        <td><%= @customer.nickname %></td>
+      </tr>
+      <tr>
+        <td>
+          <%= link_to whisper_path(whisper.id) do %>
+            <%= whisper.content %>
+          <% end %>
+        </td>
+      </tr>
+      <% if whisper.images.present? %>
+        <tr>
+          <td>
+            <% whisper.images.each do |image| %>
+              <%= image_tag image.to_s %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      <!--<tr><td>作成日時等</td></tr>-->
+    <% end %>
+  </table>
 <% else %>
-  <!--つぶやいていない場合-->
   <%= @customer.nickname %>さんはまだつぶやいていません。
 <% end %>

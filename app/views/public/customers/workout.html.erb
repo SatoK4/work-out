@@ -1,16 +1,35 @@
 <%= render 'public/shared/profile', customer: @customer %>
 <h3><%= @customer.nickname %>のトレーニング</h3>
 
-<!--トレーニングを投稿しているか確認-->
 <% if @workouts.present? %>
-  <!--投稿していた場合-->
-  <% @workouts.each do |workout| %>
-    <%= render 'public/shared/icon', customer: @customer %>
-    <%= @customer.nickname %>
-    <%= workout.name %>
-    <%= workout.introduction %>
-  <% end %>
+  <table>
+    <% @workouts.each do |workout| %>
+      <tr>
+        <td><%= render 'public/shared/icon', customer: @customer %></td>
+        <td><%= @customer.nickname %></td>
+      </tr>
+      <tr>
+        <td>
+          <%= link_to workout_path(workout.id) do %>
+            <%= workout.name %>
+            <%= workout.introduction %>
+          <% end %>
+        </td>
+      </tr>
+      <% if workout.images.present? %>
+        <tr>
+          <td>
+            <% workout.images.each do |image| %>
+              <%= image_tag image.to_s %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      <tr>
+        <!--<td>作成日時等</td>-->
+      </tr>
+    <% end %>
+  </table>
 <% else %>
-  <!--投稿していなかった場合-->
   <%= @customer.nickname %>さんはまだトレーニングを投稿していません。
 <% end %>
