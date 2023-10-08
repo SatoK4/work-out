@@ -5,19 +5,21 @@
     <tr>
       <td><%= render 'public/shared/icon', customer: whisper.customer %><%= whisper.customer.nickname %></td>
     </tr>
-    <%= link_to whisper_path(whisper.id) do %>
-      <tr>
-        <td><%= whisper.content %></td>
-      </tr>
-      <tr>
-        <td>
-          <% if whisper.images.present? %>
-            <% whisper.images.each do |image| %>
-              <%= image_tag image.to_s %>
-            <% end %>
+    <tr>
+      <td>
+        <%= link_to whisper_path(whisper.id) do %>
+          <%= whisper.content %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <% if whisper.images.present? %>
+          <% whisper.images.each do |image| %>
+            <%= image_tag image.to_s %>
           <% end %>
-        </td>
-      </tr>
-    <% end %>
+        <% end %>
+      </td>
+    </tr>
   <% end %>
 </table>
