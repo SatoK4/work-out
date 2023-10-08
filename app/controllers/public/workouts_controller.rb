@@ -21,6 +21,11 @@ class Public::WorkoutsController < ApplicationController
     @workout = Workout.find(params[:id])
   end
 
+  def destroy
+    Workout.find(params[:id]).destroy
+    redirect_to workouts_customer_path(current_customer.id)
+  end
+
   private
   def workout_params
     params.require(:workout).permit(:name, :introduction, {images: []} )
