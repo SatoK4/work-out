@@ -8,7 +8,7 @@ class Public::WhispersController < ApplicationController
     if @whisper.save
       redirect_to whisper_path(@whisper.id)
     else
-      flash.now[:alret] = "投稿に失敗しました。"
+      flash[:alert] = "投稿に失敗しました。"
       render :new
     end
   end
