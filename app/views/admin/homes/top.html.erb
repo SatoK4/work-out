@@ -1,9 +1,34 @@
 <h3>みんなのトレーニング</h3>
-
-<%= @workouts.each do |workout| %>
-  <!--画像を表示-->
-  <%= workout.name %>
-  <%= workout.introduction %>
-  <!--コメントの数を表示-->
-  <!--投稿日時を表示-->
-<% end %>
+<table>
+  <% @workouts.each do |workout| %>
+    <tr>
+      <td>
+        <%= render "admin/shared/small_icon", customer: workout.customer %>
+        <%= workout.customer.nickname %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to admin_workout_path(workout.id) do %>
+          <%= workout.name %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <% if workout.images.present? %>
+          <% workout.images.each do |image| %>
+            <%= image_tag image.to_s %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= workout.introduction %></td>
+    </tr>
+    <tr>
+      <td><!--コメントの数を表示--></td>
+      <td><!--投稿日時を表示--></td>
+    </tr>
+  <% end %>
+</table>
