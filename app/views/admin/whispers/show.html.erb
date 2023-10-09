@@ -1,6 +1,12 @@
-<!--ユーザーアイコン＆ユーザー名-->
+<%= render "admin/shared/large_icon", customer: @whisper.customer %>
+<%= @whisper.customer.nickname %>
 
 <%= @whisper.content %>
+<% if @whisper.images.present? %>
+  <% @whisper.images.each do |image| %>
+    <%= image_tag image.to_s %>
+  <% end %>
+<% end %>
 <!--公開、非公開ボタンを追加-->
 <!--日時を追加-->
 <!--コメントを表示-->
