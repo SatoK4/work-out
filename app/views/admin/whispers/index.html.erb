@@ -8,7 +8,11 @@
       </td>
     </tr>
     <tr>
-      <td><%= whisper.content %></td>
+      <td>
+        <%= link_to admin_whisper_path(whisper.id) do %>
+          <%= whisper.content %>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <td>
