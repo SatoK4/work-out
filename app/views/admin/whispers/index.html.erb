@@ -1,8 +1,27 @@
-みんなのつぶやき
-
-<%= @whispers.each do |whisper| %>
-  <!--ユーザーアイコン＆ユーザー名-->
-  <%= whisper.content %>
-  <!--コメントを表示（ドロップダウン形式）-->
-  <!--つぶやいた日時-->
-<% end %>
+<h3>みんなのつぶやき</h3>
+<table>
+  <% @whispers.each do |whisper| %>
+    <tr>
+      <td>
+        <%= render "admin/shared/small_icon", customer: whisper.customer %>
+        <%= whisper.customer.nickname %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= whisper.content %></td>
+    </tr>
+    <tr>
+      <td>
+        <% if whisper.images.present? %>
+          <% whisper.images.each do |image| %>
+            <%= image_tag image.to_s %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td><!--コメントの件数を表示--></td>
+      <td><!--つぶやいた日時--></td>
+    </tr>
+  <% end %>
+</table>
