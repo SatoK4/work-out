@@ -1,5 +1,7 @@
-<%= render "admin/shared/large_icon", customer: @whisper.customer %>
-<%= @whisper.customer.nickname %>
+<%= link_to admin_customer(@whisper.customer_id) do %>
+  <%= render "admin/shared/large_icon", customer: @whisper.customer %>
+  <%= @whisper.customer.nickname %>
+<% end %>
 
 <%= @whisper.content %>
 <% if @whisper.images.present? %>
