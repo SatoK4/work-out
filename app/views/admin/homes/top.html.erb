@@ -3,8 +3,10 @@
   <% @workouts.each do |workout| %>
     <tr>
       <td>
-        <%= render "admin/shared/small_icon", customer: workout.customer %>
-        <%= workout.customer.nickname %>
+        <%= link_to admin_customer_path(workout.customer_id) do %>
+          <%= render "admin/shared/small_icon", customer: workout.customer %>
+          <%= workout.customer.nickname %>
+        <% end %>
       </td>
     </tr>
     <tr>
