@@ -1,26 +1,30 @@
 <h3><%= @customer.nickname %>のつぶやき</h3>
-<table>
-  <% @whispers.each do |whisper| %>
-    <tr>
-      <td>
-        <%= link_to admin_whisper_path(whisper.id) do %>
-          <%= whisper.content %>
-        <% end %>
+<% if @whispers.present? %>
+  <table>
+    <% @whispers.each do |whisper| %>
+      <tr>
+        <td>
+          <%= link_to admin_whisper_path(whisper.id) do %>
+            <%= whisper.content %>
+          <% end %>
+          </td>
+        </tr>
+      <tr>
+        <td>
+          <% if whisper.images.present? %>
+            <% whisper.images.each do |image| %>
+              <%= image_tag image.to_s %>
+            <% end %>
+          <% end %>
         </td>
       </tr>
-    <tr>
-      <td>
-        <% if whisper.images.present? %>
-          <% whisper.images.each do |image| %>
-            <%= image_tag image.to_s %>
-          <% end %>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td><!--コメント数を確認--></td>
-      <td><!--公開・非公開トグルボタン--></td>
-      <td><!--投稿日時--></td>
-    </tr>
-  <% end %>
-</table>
+      <tr>
+        <td><!--コメント数を確認--></td>
+        <td><!--公開・非公開トグルボタン--></td>
+        <td><!--投稿日時--></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>あなたはつぶやいていません。</p>
+<% end %>
