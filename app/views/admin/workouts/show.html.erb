@@ -1,5 +1,10 @@
 <h3><%= @workout.name %></h3>
 <%= render "admin/shared/large_icon", customer: @workout.customer %>
 <%= @workout.customer.nickname %>
+<% if @workout.images.present? %>
+  <% @workout.images.each do |image| %>
+    <%= image_tag image.to_s %>
+  <% end %>
+<% end %>
 <%= @workout.introduction %>
 <!--コメントの内容を表示-->
