@@ -3,8 +3,10 @@
   <% @whispers.each do |whisper| %>
     <tr>
       <td>
-        <%= render "admin/shared/small_icon", customer: whisper.customer %>
-        <%= whisper.customer.nickname %>
+        <%= link_to admin_customer_path(whisper.customer_id) do %>
+          <%= render "admin/shared/small_icon", customer: whisper.customer %>
+          <%= whisper.customer.nickname %>
+        <% end %>
       </td>
     </tr>
     <tr>
