@@ -1,6 +1,5 @@
 <h3><%= @workout.name %></h3>
-
-<!--ユーザーアイコン＆ユーザー名-->
-
+<%= render "admin/shared/large_icon", customer: @workout.customer %>
+<%= @workout.customer.nickname %>
 <%= @workout.introduction %>
 <!--コメントの内容を表示-->
