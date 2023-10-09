@@ -1,6 +1,8 @@
 <h3><%= @workout.name %></h3>
-<%= render "admin/shared/large_icon", customer: @workout.customer %>
-<%= @workout.customer.nickname %>
+<%= link_to admin_customer_path(@workout.customer_id) do %>
+  <%= render "admin/shared/large_icon", customer: @workout.customer %>
+  <%= @workout.customer.nickname %>
+<% end %>
 <% if @workout.images.present? %>
   <% @workout.images.each do |image| %>
     <%= image_tag image.to_s %>
