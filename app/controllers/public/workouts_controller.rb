@@ -6,9 +6,10 @@ class Public::WorkoutsController < ApplicationController
   def create
     @workout = Workout.new(workout_params.merge(:customer_id=>current_customer.id))
     if @workout.save!
+      flash[:success] = "投稿に成功しました"
       redirect_to workout_path(@workout.id)
     else
-      flash[:alert] = "投稿に失敗しました。"
+      flash.now[:alert] = "投稿に失敗しました。"
       render :new
     end
   end
@@ -23,6 +24,7 @@ class Public::WorkoutsController < ApplicationController
 
   def destroy
     Workout.find(params[:id]).destroy
+    flash[:success] = "削除に成功しました。"
     redirect_to workouts_customer_path(current_customer.id)
   end
 

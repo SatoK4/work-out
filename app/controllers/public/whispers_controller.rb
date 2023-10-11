@@ -6,9 +6,10 @@ class Public::WhispersController < ApplicationController
   def create
     @whisper = Whisper.new(whisper_params.merge(:customer_id=>current_customer.id))
     if @whisper.save
+      flash[:success] = "つぶやきました。"
       redirect_to whisper_path(@whisper.id)
     else
-      flash[:alert] = "投稿に失敗しました。"
+      flash.now[:alert] = "投稿に失敗しました。"
       render :new
     end
   end
@@ -24,6 +25,7 @@ class Public::WhispersController < ApplicationController
 
   def destroy
     Whisper.find(params[:id]).delete
+    flash[:success] = "削除しました。"
     redirect_to whispers_customer_path(current_customer.id)
   end
 
