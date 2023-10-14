@@ -1,6 +1,6 @@
 require "test_helper"
 
-class BookmarkTest < ActiveSupport::TestCase
+class WorkoutBookmarkTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

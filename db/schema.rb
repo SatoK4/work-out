@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_02_182453) do
+ActiveRecord::Schema.define(version: 2023_10_13_141139) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,13 +22,6 @@ ActiveRecord::Schema.define(version: 2023_10_02_182453) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-  end
-
-  create_table "bookmarks", force: :cascade do |t|
-    t.integer "whisper_id", null: false
-    t.integer "customer_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -53,6 +46,13 @@ ActiveRecord::Schema.define(version: 2023_10_02_182453) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "whisper_bookmarks", force: :cascade do |t|
+    t.integer "whisper_id"
+    t.integer "customer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "whisper_comments", force: :cascade do |t|
     t.integer "whisper_id", null: false
     t.integer "customer_id", null: false
@@ -67,6 +67,13 @@ ActiveRecord::Schema.define(version: 2023_10_02_182453) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.json "images"
+  end
+
+  create_table "workout_bookmarks", force: :cascade do |t|
+    t.integer "workout_id"
+    t.integer "customer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "workout_comments", force: :cascade do |t|

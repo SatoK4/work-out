@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'workout_bookmarks/index'
+  end
+  namespace :public do
+    get 'whisper_bookmarks/index'
+  end
   root to: "homes#top"
 
   #顧客用
@@ -7,11 +13,11 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
   scope module: :public do
-    resources :whispers,      only:[:new, :create, :index, :show, :destroy]
-    resources :bookmarks,     only:[:create, :index, :destroy]
-    resources :workouts,      only:[:new, :create, :index, :show, :destroy]
-    resources :workout_lists, only:[:create, :index, :show, :destroy]
-    # resources :customers, only:[:show]
+    resources :whispers,          only:[:new, :create, :index, :show, :destroy]
+    resources :whisper_bookmarks, only:[:create, :index, :destroy]
+    resources :workouts,          only:[:new, :create, :index, :show, :destroy]
+    resources :workout_bookmarks, only:[:create, :index, :destroy]
+    resources :workout_lists,     only:[:create, :index, :show, :destroy]
     get '/customers/:id/whispers'     => 'customers#whisper', as: "whispers_customer"
     get '/customers/:id/workouts'     => 'customers#workout', as: "workouts_customer"
     get '/customers/information/edit' => 'customers#edit',    as: "edit_customer"
