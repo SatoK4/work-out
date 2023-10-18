@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'workout_bookmarks/index'
-  end
-  namespace :public do
-    get 'whisper_bookmarks/index'
+  namespace :admin do
+    
   end
   root to: "homes#top"
 
@@ -35,6 +32,7 @@ Rails.application.routes.draw do
     resources :workouts,  only:[:show]
     resources :whispers,  only:[:index, :show]
     resources :customers, only:[:index, :show]
+    resources :tags,      only:[:index, :create, :edit, :update, :destroy]
     get '/:id/whispers' => 'customers#whisper', as: "customer_whispers"
     get '/:id/workouts' => 'customers#workout', as: "customer_workouts"
   end
