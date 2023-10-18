@@ -25,8 +25,7 @@
           <td><%= tag.name %></td>
           <td colspan="3"></td>
           <td>
-            <%= link_to "タグを変更する", edit_admin_tag_path(tag.id) %>
-            <%= link_to "タグを削除する", admin_tag_path(tag.id), method: :delete, "data-confirm" => "本当にタグを削除しますか？" %>
+            <%= link_to "タグを削除する", admin_tag_path(tag.id), method: :delete, "data-confirm" => "このタグを消去した場合、投稿者のタグも同時に削除されます。本当にタグを削除しますか？" %>
           </td>
         </tr>
       <% end 
