@@ -15,7 +15,7 @@ class Public::WorkoutsController < ApplicationController
   end
 
   def index
-    @workouts = Workout.all
+    @workouts = params[:tag_id].present? ? Tag.find(params[:tag_id]).workouts : Workout.all
   end
 
   def show
@@ -30,6 +30,6 @@ class Public::WorkoutsController < ApplicationController
 
   private
   def workout_params
-    params.require(:workout).permit(:name, :introduction, {images: []} )
+    params.require(:workout).permit(:name, :introduction, {images: []}, tag_ids: [] )
   end
 end
