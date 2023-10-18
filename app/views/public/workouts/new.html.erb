@@ -15,6 +15,16 @@
       <td><%= f.label :"トレーニング内容" %></td>
       <td><%= f.text_area :introduction %></td>
     </tr>
+    <tr>
+      <td>
+        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+          <%= tag.label do %>
+            <%= tag.check_box %>
+            <%= tag.text %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
   </table>
   <%= f.submit '投稿' %>
 <% end %>
