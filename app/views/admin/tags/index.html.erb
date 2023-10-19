@@ -7,7 +7,7 @@
     <tbody>
       <tr>
         <td>タグ名</td>
-        <td><%= f.text_field :name, :size=>"35" %></td>
+        <td><%= f.text_field :tag_name, :size=>"35" %></td>
         <td colspan="2"></td>
         <td><%= f.submit "新規登録" %></td>
       </tr>
@@ -22,12 +22,12 @@
     <tbody>
       <% @tags.each do |tag| %>
         <tr>
-          <td><%= tag.name %></td>
+          <td><%= tag.tag_name %></td>
           <td colspan="3"></td>
           <td>
             <%= link_to "タグを削除する", admin_tag_path(tag.id), method: :delete, "data-confirm" => "このタグを消去した場合、投稿者のタグも同時に削除されます。本当にタグを削除しますか？" %>
           </td>
         </tr>
-      <% end 
+      <% end %>
     </tbody>
   </table>
