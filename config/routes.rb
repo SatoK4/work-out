@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     resources :workouts,  only:[:show, :destroy]
     resources :whispers,  only:[:index, :show, :destroy]
     resources :customers, only:[:index, :show, :destroy]
-    resources :tags,      only:[:index, :create, :edit, :update, :destroy]
+    resources :tags,      only:[:index, :create, :destroy]
     get '/:id/whispers' => 'customers#whisper', as: "customer_whispers"
     get '/:id/workouts' => 'customers#workout', as: "customer_workouts"
   end
