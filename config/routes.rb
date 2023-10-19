@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     patch '/customers/information'    => 'customers#update',  as: "update_customer"
     get '/customers/unsubscribe',                             as: "unsubscribe_customer"
     patch '/customers/withdrawal',                            as: "withdrawal_customer"
+    get 'search'                      => 'workouts#search'
   end
 
   #管理者用

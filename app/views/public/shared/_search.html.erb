@@ -1,0 +1,14 @@
+<%= form_with url: workouts_path, method: :get, local: true do |f| %>
+  <%= f.text_field :keyword, value: @keyword, placeholder: "キーワードを入力" %>
+    <%= button_tag type: "submit" do %>
+      <i class="fa-solid fa-magnifying-glass"></i>検索</submit>
+    <% end %>
+    
+    <%= select_tag :tag_id,
+      options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),
+        {
+          prompt: "タグで絞り込み検索"
+          onchange: "submit(this.form);"
+        }
+    %>
+<% end %>

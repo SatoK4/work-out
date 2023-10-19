@@ -16,6 +16,12 @@ class Public::WorkoutsController < ApplicationController
 
   def index
     @workouts = params[:tag_id].present? ? Tag.find(params[:tag_id]).workouts : Workout.all
+    if params[:keyword]
+      @workouts = @workouts.search(params[:keyword]).all
+    else
+      @workouts = @workouts.all
+    end
+    @keyword = params[:keyword]
   end
 
   def show

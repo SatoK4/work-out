@@ -5,4 +5,8 @@ class Workout < ApplicationRecord
   has_many :tags, through: :workout_tags
   has_many :workout_list_details
   has_many :workout_bookmarks
+
+  def self.search(keyword)
+    where("name LIKE ? or introduction LIKE ?", "%#{keyword}%", "%#{keyword}%")
+  end
 end
