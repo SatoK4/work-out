@@ -29,9 +29,9 @@ Rails.application.routes.draw do
   }
   namespace :admin do
     root to: "homes#top"
-    resources :workouts,  only:[:show]
-    resources :whispers,  only:[:index, :show]
-    resources :customers, only:[:index, :show]
+    resources :workouts,  only:[:show, :destroy]
+    resources :whispers,  only:[:index, :show, :destroy]
+    resources :customers, only:[:index, :show, :destroy]
     resources :tags,      only:[:index, :create, :edit, :update, :destroy]
     get '/:id/whispers' => 'customers#whisper', as: "customer_whispers"
     get '/:id/workouts' => 'customers#workout', as: "customer_workouts"
