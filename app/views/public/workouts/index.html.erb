@@ -1,29 +1,15 @@
 <h3>みんなのトレーニング</h3>
 <%= link_to new_workout_path do %>
-  新規登録画面に移動
-  <!--＋ボタンに変更-->
+  <span class="fa-stack">
+    <i class="fa-solid fa-circle fa-stack-2x" style="color: #98dfec;"></i>
+    <i class="fa-solid fa-plus fa-stack-1x fa-inverse"></i>
+  </span>
 <% end %>
 <table>
   <% @workouts.each do |workout| %>
     <tr>
-      <td><%= render "public/shared/icon", customer: workout.customer %></td>
-      <td><%= workout.customer.nickname %></td>
-    </tr>
-    <tr>
       <td>
-        <%= link_to workout_path(workout.id) do %>
-          <%= workout.name %>
-        <% end %>
-      </td>
-    </tr>
-    <tr><td><%= workout.introduction %></td></tr>
-    <tr>
-      <td>
-        <% if workout.images.present? %>
-          <% workout.images.each do |image| %>
-            <%= image_tag image.to_s %>
-          <% end %>
-        <% end %>
+        <%= render 'public/shared/workout_post', workout: workout %>
       </td>
     </tr>
   <% end %>

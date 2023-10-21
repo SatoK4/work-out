@@ -1,15 +1,3 @@
 <%= flash[:success] %>
 <h3>投稿したトレーニングの詳細</h3>
-<%= render "public/shared/icon", customer: @workout.customer %>
-<%= @workout.customer.nickname %>
-<% if @workout.customer_id == current_customer.id %>
-  <%= link_to "削除する", workout_path, method: :delete %>
-<% end %>
-
-<%= @workout.name %>
-<%= @workout.introduction %>
-<% if @workout.images.present? %>
-  <% @workout.images.each do |image| %>
-    <%= image_tag image.to_s %>
-  <% end %>
-<% end %>
+<%= render 'public/shared/workout_post', workout: @workout %>
