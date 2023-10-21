@@ -1,24 +1,16 @@
 <h3>みんなのつぶやき</h3>
-<%= link_to "新しくつぶやく", new_whisper_path %>
+<%= link_to new_whisper_path do %>
+  <span class="fa-stack">
+    <i class="fa-solid fa-circle fa-stack-2x" style="color: #98dfec;"></i>
+    <i class="fa-solid fa-plus fa-stack-1x fa-inverse"></i>
+  </span>
+<% end %>
+
 <table>
   <% @whispers.each do |whisper| %>
     <tr>
-      <td><%= render 'public/shared/icon', customer: whisper.customer %><%= whisper.customer.nickname %></td>
-    </tr>
-    <tr>
       <td>
-        <%= link_to whisper_path(whisper.id) do %>
-          <%= whisper.content %>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <% if whisper.images.present? %>
-          <% whisper.images.each do |image| %>
-            <%= image_tag image.to_s %>
-          <% end %>
-        <% end %>
+        <%= render 'public/shared/whisper_post', whisper: whisper %>
       </td>
     </tr>
   <% end %>

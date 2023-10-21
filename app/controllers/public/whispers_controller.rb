@@ -20,7 +20,6 @@ class Public::WhispersController < ApplicationController
 
   def show
     @whisper = Whisper.find(params[:id])
-    @customer = @whisper.customer
   end
 
   def destroy
