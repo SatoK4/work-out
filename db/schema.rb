@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_19_100821) do
+ActiveRecord::Schema.define(version: 2023_10_21_151405) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -56,14 +56,14 @@ ActiveRecord::Schema.define(version: 2023_10_19_100821) do
   create_table "whisper_comments", force: :cascade do |t|
     t.integer "whisper_id", null: false
     t.integer "customer_id", null: false
-    t.string "comment", null: false
+    t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "whispers", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.string "content", null: false
+    t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.json "images"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2023_10_19_100821) do
   create_table "workout_comments", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "workout_id", null: false
-    t.string "comment", null: false
+    t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 2023_10_19_100821) do
   create_table "workouts", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.string "name", null: false
-    t.string "introduction", null: false
+    t.text "introduction", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.json "images"
