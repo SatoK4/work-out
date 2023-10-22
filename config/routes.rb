@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    
-  end
   root to: "homes#top"
 
   #顧客用
@@ -12,7 +9,9 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :whispers,          only:[:new, :create, :index, :show, :destroy]
     resources :whisper_bookmarks, only:[:create, :index, :destroy]
-    resources :workouts,          only:[:new, :create, :index, :show, :destroy]
+    resources :workouts,          only:[:new, :create, :index, :show, :destroy] do
+      resources :workout_comments, only:[:create, :destroy]
+    end
     resources :workout_bookmarks, only:[:create, :index, :destroy]
     resources :workout_lists,     only:[:create, :index, :show, :destroy]
     get '/customers/:id/whispers'     => 'customers#whisper', as: "whispers_customer"

@@ -1,0 +1,17 @@
+<div>
+  <%= form_with model: [workout, workout_comment] do |f| %>
+    <%= f.text_area :comment, cols: '50', placeholder: "コメントを記入してください。" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
+
+<% workout.workout_comments.each do |workout_comment| %>
+  <%= render "public/shared/icon", customer: workout.customer %>
+  <%= workout.customer.nickname %>
+  <%= workout_comment.comment %>
+  <%= l workout_comment.created_at, format: :short %>
+  <% if workout_comment.customer_id == current_customer.id %>
+    <%= link_to "コメントを削除", workout_workout_comment_path(workout_comment.workout, workout_comment), method: :delete %>
+  <% end %>
+<% end %>
+

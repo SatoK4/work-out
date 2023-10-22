@@ -26,6 +26,7 @@ class Public::WorkoutsController < ApplicationController
 
   def show
     @workout = Workout.find(params[:id])
+    @workout_comment = WorkoutComment.new
   end
 
   def destroy

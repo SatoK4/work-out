@@ -1,0 +1,41 @@
+<div>
+  <%= render "public/shared/icon", customer: workout.customer %>
+  <%= workout.customer.nickname %>
+  <% if controller.action_name == 'show' && workout.customer_id == current_customer.id %>
+    <%= link_to "削除する", workout_path, method: :delete %>
+  <% end %>
+</div>
+<div>
+  <%= link_to workout_path(workout.id) do %>
+    <%= workout.name %>
+  <% end %>
+</div>
+<div>
+  <%= workout.introduction %>
+</div>
+<div>
+  <% if workout.images.present? %>
+    <% workout.images.each do |image| %>
+      <%= image_tag image.to_s %>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <% workout.tags.each do |tag| %>
+    <%= tag.name %>
+  <% end %>
+</div>
+<div>
+  <div>
+    <i class="fa-regular fa-comment"></i>
+    <%= workout.workout_comments.count %>
+  </div>
+  <!--お気に入り-->
+  <!--リストに追加-->
+  <div>
+    <%= l workout.created_at, format: :short %>
+  </div>
+</div>
+<% if controller.action_name == 'show' %>
+  <%= render partial: 'public/shared/comment', locals: { workout: workout, workout_comment: workout_comment } %>
+<% end %>
