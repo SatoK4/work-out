@@ -1,0 +1,30 @@
+<div>
+  <%= link_to admin_customer_path(whisper.customer_id) do %>
+    <%= render "admin/shared/small_icon", customer: whisper.customer %>
+    <%= whisper.customer.nickname %>
+  <% end %>
+  <% if controller.action_name == 'show' %>
+    <%= link_to "削除する", admin_whisper_path, method: :delete %>
+  <% end %>
+</div>
+<div>
+  <%= link_to admin_whisper_path(whisper.id) do %>
+    <%= whisper.content %>
+  <% end %>
+</div>
+<div>
+  <% if whisper.images.present? %>
+    <% whisper.images.each do |image| %>
+      <%= image_tag image.to_s %>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <div>
+    <i class="fa-regular fa-comment"></i>
+    <%= whisper.whisper_comments.count %>
+  </div>
+  <!--お気に入り-->
+  <!--リストに追加-->
+  <%= l whisper.created_at, format: :short %>
+</div>

@@ -3,34 +3,8 @@
   <% @workouts.each do |workout| %>
     <tr>
       <td>
-        <%= link_to admin_customer_path(workout.customer_id) do %>
-          <%= render "admin/shared/small_icon", customer: workout.customer %>
-          <%= workout.customer.nickname %>
-        <% end %>
+        <%= render "admin/shared/workout_post", workout: workout %>
       </td>
-    </tr>
-    <tr>
-      <td>
-        <%= link_to admin_workout_path(workout.id) do %>
-          <%= workout.name %>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <% if workout.images.present? %>
-          <% workout.images.each do |image| %>
-            <%= image_tag image.to_s %>
-          <% end %>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td><%= workout.introduction %></td>
-    </tr>
-    <tr>
-      <td><!--コメントの数を表示--></td>
-      <td><!--投稿日時を表示--></td>
     </tr>
   <% end %>
 </table>

@@ -3,31 +3,8 @@
   <% @whispers.each do |whisper| %>
     <tr>
       <td>
-        <%= link_to admin_customer_path(whisper.customer_id) do %>
-          <%= render "admin/shared/small_icon", customer: whisper.customer %>
-          <%= whisper.customer.nickname %>
-        <% end %>
+        <%= render "admin/shared/whisper_post", whisper: whisper %>
       </td>
-    </tr>
-    <tr>
-      <td>
-        <%= link_to admin_whisper_path(whisper.id) do %>
-          <%= whisper.content %>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <% if whisper.images.present? %>
-          <% whisper.images.each do |image| %>
-            <%= image_tag image.to_s %>
-          <% end %>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td><!--コメントの件数を表示--></td>
-      <td><!--つぶやいた日時--></td>
     </tr>
   <% end %>
 </table>

@@ -1,14 +1,2 @@
-<%= link_to admin_customer_path(@whisper.customer_id) do %>
-  <%= render "admin/shared/large_icon", customer: @whisper.customer %>
-  <%= @whisper.customer.nickname %>
-<% end %>
-
-<%= @whisper.content %>
-<% if @whisper.images.present? %>
-  <% @whisper.images.each do |image| %>
-    <%= image_tag image.to_s %>
-  <% end %>
-<% end %>
-<!--公開、非公開ボタンを追加-->
-<!--日時を追加-->
-<!--コメントを表示-->
+<h3>つぶやき詳細</h3>
+<%= render "admin/shared/whisper_post", whisper: @whisper %>
