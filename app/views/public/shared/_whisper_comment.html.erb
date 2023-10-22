@@ -6,8 +6,10 @@
 </div>
 
 <% whisper.whisper_comments.each do |whisper_comment| %>
-  <%= render "public/shared/icon", customer: whisper.customer %>
-  <%= whisper.customer.nickname %>
+  <%= link_to whispers_customer_path(whisper_comment.customer_id) do %>
+    <%= render "public/shared/icon", customer: whisper_comment.customer %>
+    <%= whisper_comment.customer.nickname %>
+  <% end %>
   <%= whisper_comment.comment %>
   <%= l whisper_comment.created_at, format: :short %>
   <% if whisper_comment.customer_id == current_customer.id %>

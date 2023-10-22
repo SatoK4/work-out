@@ -6,8 +6,10 @@
 </div>
 
 <% workout.workout_comments.each do |workout_comment| %>
-  <%= render "public/shared/icon", customer: workout.customer %>
-  <%= workout.customer.nickname %>
+  <%= link_to workouts_customer_path(workout_comment.customer_id) do %>
+    <%= render "public/shared/icon", customer: workout_comment.customer %>
+    <%= workout_comment.customer.nickname %>
+  <% end %>
   <%= workout_comment.comment %>
   <%= l workout_comment.created_at, format: :short %>
   <% if workout_comment.customer_id == current_customer.id %>
