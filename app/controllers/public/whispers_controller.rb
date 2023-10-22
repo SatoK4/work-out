@@ -20,6 +20,7 @@ class Public::WhispersController < ApplicationController
 
   def show
     @whisper = Whisper.find(params[:id])
+    @whisper_comment = WhisperComment.new
   end
 
   def destroy

@@ -1,5 +1,5 @@
 class Whisper < ApplicationRecord
-  has_many :whisper_comments
+  has_many :whisper_comments, dependent: :destroy
   has_many :wisper_bookmarks, dependent: :destroy
   belongs_to :customer
   

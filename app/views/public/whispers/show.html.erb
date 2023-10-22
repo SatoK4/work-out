@@ -1,3 +1,3 @@
 <%= flash[:success] %>
 <h3>つぶやき詳細</h3>
-<%= render 'public/shared/whisper_post', whisper: @whisper %>
+<%= render partial: 'public/shared/whisper_post', locals: { whisper: @whisper, whisper_comment: @whisper_comment, whisper_comments: @whisper_comments }  %>

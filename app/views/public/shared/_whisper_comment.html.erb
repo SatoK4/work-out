@@ -1,0 +1,16 @@
+<div>
+  <%= form_with model: [whisper, whisper_comment] do |f| %>
+    <%= f.text_area :comment, cols: '50', placeholder: "コメントを記入してください。" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
+
+<% whisper.whisper_comments.each do |whisper_comment| %>
+  <%= render "public/shared/icon", customer: whisper.customer %>
+  <%= whisper.customer.nickname %>
+  <%= whisper_comment.comment %>
+  <%= l whisper_comment.created_at, format: :short %>
+  <% if whisper_comment.customer_id == current_customer.id %>
+    <%= link_to "コメントを削除", whisper_whisper_comment_path(whisper_comment.whisper, whisper_comment), method: :delete %>
+  <% end %>
+<% end %>

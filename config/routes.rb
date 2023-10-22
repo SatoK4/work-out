@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
   scope module: :public do
-    resources :whispers,          only:[:new, :create, :index, :show, :destroy]
+    resources :whispers,          only:[:new, :create, :index, :show, :destroy] do
+      resources :whisper_comments, only:[:create, :destroy]
+    end
     resources :whisper_bookmarks, only:[:create, :index, :destroy]
     resources :workouts,          only:[:new, :create, :index, :show, :destroy] do
       resources :workout_comments, only:[:create, :destroy]
