@@ -1,6 +1,8 @@
 <div>
-  <%= render "public/shared/icon", customer: workout.customer %>
-  <%= workout.customer.nickname %>
+  <%= link_to workouts_customer_path(workout.customer_id) do %>
+    <%= render "public/shared/icon", customer: workout.customer %>
+    <%= workout.customer.nickname %>
+  <% end %>
   <% if controller.action_name == 'show' && workout.customer_id == current_customer.id %>
     <%= link_to "削除する", workout_path, method: :delete %>
   <% end %>

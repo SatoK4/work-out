@@ -1,6 +1,8 @@
 <div>
-  <%= render "public/shared/icon", customer: whisper.customer %>
-  <%= whisper.customer.nickname %>
+  <%= link_to whispers_customer_path(whisper.customer_id) do %>
+    <%= render "public/shared/icon", customer: whisper.customer %>
+    <%= whisper.customer.nickname %>
+  <% end %>
   <% if controller.action_name == 'show' && whisper.customer_id == current_customer.id %>
     <%= link_to "削除する", whisper_path, method: :delete %>
   <% end %>
