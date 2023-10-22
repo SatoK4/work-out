@@ -37,5 +37,5 @@
   </div>
 </div>
 <% if controller.action_name == 'show' %>
-  <%= render partial: 'public/shared/comment', locals: { workout: workout, workout_comment: workout_comment } %>
+  <%= render partial: 'public/shared/workout_comment', locals: { workout: workout, workout_comment: workout_comment } %>
 <% end %>
