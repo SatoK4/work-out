@@ -8,6 +8,10 @@ class Workout < ApplicationRecord
 
 mount_uploaders :images, ImageUploader
 
+  def find_bookmark(customer)
+    bookmarks.find_by(customer_id: customer.id)
+  end
+  
   def self.search(keyword)
     where("name LIKE ? or introduction LIKE ?", "%#{keyword}%", "%#{keyword}%")
   end
