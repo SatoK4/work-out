@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_21_151405) do
+ActiveRecord::Schema.define(version: 2023_10_23_200821) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2023_10_21_151405) do
     t.integer "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id", "whisper_id"], name: "index_whisper_bookmarks_on_customer_id_and_whisper_id", unique: true
   end
 
   create_table "whisper_comments", force: :cascade do |t|
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(version: 2023_10_21_151405) do
     t.integer "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id", "workout_id"], name: "index_workout_bookmarks_on_customer_id_and_workout_id", unique: true
   end
 
   create_table "workout_comments", force: :cascade do |t|

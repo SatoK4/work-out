@@ -24,7 +24,9 @@
     <i class="fa-regular fa-comment"></i>
     <%= whisper.whisper_comments.count %>
   </div>
-  <!--お気に入り-->
+  <div>
+    <%= render "public/shared/whisper_bookmark", whisper: whisper %>
+  </div>
   <!--リストに追加-->
   <%= l whisper.created_at, format: :short %>
 </div>

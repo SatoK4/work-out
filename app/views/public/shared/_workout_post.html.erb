@@ -32,7 +32,9 @@
     <i class="fa-regular fa-comment"></i>
     <%= workout.workout_comments.count %>
   </div>
-  <!--お気に入り-->
+  <div>
+    <%= render "public/shared/workout_bookmark", workout: workout %>
+  </div>
   <!--リストに追加-->
   <div>
     <%= l workout.created_at, format: :short %>

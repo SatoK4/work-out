@@ -7,15 +7,17 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
   scope module: :public do
-    resources :whispers,          only:[:new, :create, :index, :show, :destroy] do
-      resources :whisper_comments, only:[:create, :destroy]
+    resources :whispers,            only:[:new, :create, :index, :show, :destroy] do
+      resources :whisper_comments,  only:[:create, :destroy]
+      resources :whisper_bookmarks, only:[:create, :index, :destroy]
     end
-    resources :whisper_bookmarks, only:[:create, :index, :destroy]
-    resources :workouts,          only:[:new, :create, :index, :show, :destroy] do
-      resources :workout_comments, only:[:create, :destroy]
+    
+    resources :workouts,            only:[:new, :create, :index, :show, :destroy] do
+      resources :workout_comments,  only:[:create, :destroy]
+      resources :workout_bookmarks, only:[:create, :index, :destroy]
     end
-    resources :workout_bookmarks, only:[:create, :index, :destroy]
-    resources :workout_lists,     only:[:create, :index, :show, :destroy]
+    
+    resources :workout_lists,       only:[:create, :index, :show, :destroy]
     get '/customers/:id/whispers'     => 'customers#whisper', as: "whispers_customer"
     get '/customers/:id/workouts'     => 'customers#workout', as: "workouts_customer"
     get '/customers/information/edit' => 'customers#edit',    as: "edit_customer"

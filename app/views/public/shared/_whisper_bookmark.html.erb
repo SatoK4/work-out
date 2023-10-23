@@ -1,0 +1,15 @@
+<% if current_customer != whisper.customer %>
+  <% if whisper.find_bookmark(current_customer).blank? %>
+  <!--お気に入り登録-->
+    <%= link_to whisper_whisper_bookmarks_path(whisper), method: :post do %>
+      <i class="fa-regular fa-heart"></i>
+    <% end %>
+    <%= whisper.whisper_bookmarks.count %>
+  <% else %>
+  <!--お気に入り削除-->
+    <%= link_to whisper_whisper_bookmark_path(whisper, whisper.find_bookmark(current_customer)), method: :delete do %>
+      <i class="fa-solid fa-heart"></i>
+    <% end %>
+    <%= whisper.whisper_bookmarks.count %>
+  <% end %>
+<% end %>

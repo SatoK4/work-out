@@ -4,14 +4,14 @@ class Workout < ApplicationRecord
   has_many :workout_tags
   has_many :tags, through: :workout_tags
   has_many :workout_list_details
-  has_many :workout_bookmarks
+  has_many :workout_bookmarks, dependent: :destroy
 
 mount_uploaders :images, ImageUploader
 
   def find_bookmark(customer)
-    bookmarks.find_by(customer_id: customer.id)
+    workout_bookmarks.find_by(customer_id: customer.id)
   end
-  
+
   def self.search(keyword)
     where("name LIKE ? or introduction LIKE ?", "%#{keyword}%", "%#{keyword}%")
   end
