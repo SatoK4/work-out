@@ -13,6 +13,6 @@ mount_uploaders :images, ImageUploader
   end
 
   def self.search(keyword)
-    where("name LIKE ? or introduction LIKE ?", "%#{keyword}%", "%#{keyword}%")
+    where("name LIKE ? or introduction LIKE ?", "%#{sanitize_sql_like(keyword)d}%", "%#{sanitize_sql_like(keyword)}%")
   end
 end
