@@ -36,3 +36,6 @@
   <!--リストに追加-->
   <%= l workout.created_at, format: :short %>
 </div>
+<% if controller.action_name == 'show' %>
+  <%= render partial: 'admin/shared/workout_comment', locals: { workout: workout } %>
+<% end %>

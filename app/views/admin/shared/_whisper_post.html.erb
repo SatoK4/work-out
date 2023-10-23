@@ -28,3 +28,6 @@
   <!--リストに追加-->
   <%= l whisper.created_at, format: :short %>
 </div>
+<% if controller.action_name == 'show' %>
+  <%= render partial: 'admin/shared/whisper_comment', locals: { whisper: whisper } %>
+<% end %>

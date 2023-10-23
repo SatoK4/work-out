@@ -31,8 +31,12 @@ Rails.application.routes.draw do
   }
   namespace :admin do
     root to: "homes#top"
-    resources :workouts,  only:[:show, :destroy]
-    resources :whispers,  only:[:index, :show, :destroy]
+    resources :workouts,  only:[:show, :destroy] do
+      resources :workout_comments, only:[:destroy]
+    end
+    resources :whispers,  only:[:index, :show, :destroy] do
+      resources :whisper_comments, only:[:destroy]
+    end
     resources :customers, only:[:index, :show, :destroy]
     resources :tags,      only:[:index, :create, :destroy]
     get '/:id/whispers' => 'customers#whisper', as: "customer_whispers"

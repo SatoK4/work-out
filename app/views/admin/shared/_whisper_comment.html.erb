@@ -1,0 +1,9 @@
+<% whisper.whisper_comments.each do |whisper_comment| %>
+  <%= link_to admin_customer_path(whisper_comment.customer_id) do %>
+    <%= render "admin/shared/small_icon", customer: whisper_comment.customer %>
+    <%= whisper_comment.customer.nickname %>
+  <% end %>
+  <%= whisper_comment.comment %>
+  <%= l whisper_comment.created_at, format: :short %>
+  <%= link_to "コメントを削除", admin_whisper_whisper_comment_path(whisper_comment.whisper, whisper_comment), method: :delete %>
+<% end %>
