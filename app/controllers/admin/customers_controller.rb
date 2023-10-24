@@ -9,12 +9,12 @@ class Admin::CustomersController < ApplicationController
 
   def whisper
     @customer = Customer.find(params[:id])
-    @whispers = Whisper.all
+    @whispers = @customer.whispers.all
   end
 
   def workout
     @customer = Customer.find(params[:id])
-    @workouts = Workout.all
+    @workouts = @customer.workouts.all
   end
 
   def withdrawal
