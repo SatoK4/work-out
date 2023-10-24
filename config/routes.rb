@@ -11,12 +11,12 @@ Rails.application.routes.draw do
       resources :whisper_comments,  only:[:create, :destroy]
       resources :whisper_bookmarks, only:[:create, :destroy]
     end
-    
+
     resources :workouts,            only:[:new, :create, :index, :show, :destroy] do
       resources :workout_comments,  only:[:create, :destroy]
       resources :workout_bookmarks, only:[:create, :destroy]
     end
-    
+
     resources :workout_lists,       only:[:create, :index, :show, :destroy]
     get '/customers/:id/whispers'           => 'customers#whisper',           as: "whispers_customer"
     get '/customers/:id/whisper_bookmarks'  => 'customers#whisper_bookmark',  as: "whisper_bookmarks_customer"
@@ -41,10 +41,11 @@ Rails.application.routes.draw do
     resources :whispers,  only:[:index, :show, :destroy] do
       resources :whisper_comments, only:[:destroy]
     end
-    resources :customers, only:[:index, :show, :destroy]
+    resources :customers, only:[:index, :show]
     resources :tags,      only:[:index, :create, :destroy]
-    get '/:id/whispers' => 'customers#whisper', as: "customer_whispers"
-    get '/:id/workouts' => 'customers#workout', as: "customer_workouts"
+    get '/:id/whispers'     => 'customers#whisper',     as: "customer_whispers"
+    get '/:id/workouts'     => 'customers#workout',     as: "customer_workouts"
+    patch 'withdrawal/:id'  => 'customers#withdrawal',  as: "customer_withdrawal"
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

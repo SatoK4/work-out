@@ -6,20 +6,25 @@ class Admin::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
   end
-  
+
   def whisper
     @customer = Customer.find(params[:id])
     @whispers = Whisper.all
   end
-  
+
   def workout
     @customer = Customer.find(params[:id])
     @workouts = Workout.all
   end
-  
-  def destroy
-    Customer.find(params[:id]).delete
-    flash[:notice] = "削除しました。"
-    redirect_to admin_customers_path
+
+  def withdrawal
+    @customer = Customer.find(params[:id])
+    @customer.update(is_deleted: !@customer.is_deleted)
+    if @customer.is_deleted
+      flash[:notice] = "退会処理を実行しました。"
+    else
+      flash[:notice] = "有効にします。"
+    end
+    redirect_to request.referer
   end
 end

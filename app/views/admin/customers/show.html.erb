@@ -7,7 +7,14 @@
   </tr>
   <tr>
     <td>会員ステータス</td>
-    <td><%= @customer.status %></td><!--ToDo ステータスを変更するボタンに変更-->
+    <td><%= @customer.status %></td>
+    <td>
+      <% if @customer.is_deleted %>
+        <%= link_to "有効にする", admin_customer_withdrawal_path(@customer.id), method: :patch %>
+      <% else %>
+        <%= link_to "退会させる", admin_customer_withdrawal_path(@customer.id), method: :patch %>
+      <% end %>
+    </td>
   </tr>
 </table>
 <%= link_to "つぶやき一覧へ", admin_customer_whispers_path %>
