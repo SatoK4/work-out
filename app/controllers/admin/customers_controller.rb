@@ -14,7 +14,7 @@ class Admin::CustomersController < ApplicationController
   
   def workout
     @customer = Customer.find(params[:id])
-    @workouts = Wourkout.all
+    @workouts = Workout.all
   end
   
   def destroy

@@ -1,19 +1,15 @@
 <h3><%= @customer.nickname %>のトレーニング</h3>
+<%= link_to "つぶやき一覧へ", admin_customer_whispers_path %>
 <% if @workouts.present? %>
-  <%= @workouts.each do |workout| %>
-    <% if workout.images.present? %>
-      <% workout.images.each do |image| %>
-        <%= image_tag image.to_s %>
-      <% end %>
+  <table>
+    <% @workouts.each do |workout| %>
+      <tr>
+        <td>
+          <%= render "admin/shared/workout_post", workout: workout %>
+        </td>
+      </tr>
     <% end %>
-    <%= link_to admin_workout_path(workout.id) do %>
-      <%= workout.name %>
-    <% end %>
-    <%= workout.introduce %>
-    <!--コメントの合計数を表示-->
-    <!--公開・非公開ボタンを作成-->
-    <!--投稿日時-->
-  <% end %>
+  </table>
 <% else %>
-<p>あなたはまだトレーニングを投稿していません。</p>
+  <p>あなたはまだトレーニングを投稿していません。</p>
 <% end %>
