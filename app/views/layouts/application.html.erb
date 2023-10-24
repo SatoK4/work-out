@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <script src="https://kit.fontawesome.com/0d6e0ddc74.js" crossorigin="anonymous"></script>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -15,7 +15,17 @@
   <body>
     <header>
       <nav>
-        <!--logo-->
+        <div>
+          <% if admin_signed_in? %>
+            <%= link_to admin_root_path do %>
+              みんなで<i class="fa-solid fa-dumbbell"></i>WorkOut
+            <% end %>
+          <% else %>
+            <%= link_to root_path do %>
+              みんなで<i class="fa-solid fa-dumbbell"></i>WorkOut
+            <% end %>
+          <% end %>
+        </div>
         <% if admin_signed_in? %>
           <%= image_tag "no-icon.png", size: "50x50" %>
           <p>管理アカウント</p>
@@ -38,7 +48,6 @@
           </ul>
           <%= link_to "トレーニング一覧", workouts_path %>
           <%= link_to "つぶやき一覧", whispers_path %>
-          <!--検索画面へ-->
         <% else %>
           <%= image_tag "no-icon.png", size: "50x50" %>
           <p>ログインしてください</p>
@@ -48,7 +57,6 @@
           </ul>
           <%= link_to "トレーニング一覧", workouts_path %>
           <%= link_to "つぶやき一覧", whispers_path %>
-          <!--検索画面へ-->
         <% end %>
       </nav>
     </header>
