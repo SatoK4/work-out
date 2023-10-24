@@ -1,0 +1,12 @@
+<%= render 'public/shared/profile', customer: @customer %>
+<h3><%= @customer.nickname %>のブックマーク一覧</h3>
+<div>
+  <h4>～つぶやき～</h4>
+  <%= link_to "トレーニングのブックマーク一覧へ", workout_bookmarks_customer_path(current_customer.id) %>
+</div>
+
+<% if @whisper_bookmarks.length != 0 %>
+  <% @whisper_bookmarks.each do |whisper| %>
+    <%= render "public/shared/whisper_post", whisper: whisper %>
+  <% end %>
+<% end %>

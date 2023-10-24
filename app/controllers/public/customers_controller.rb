@@ -4,9 +4,21 @@ class Public::CustomersController < ApplicationController
     @whispers = @customer.whispers.all
   end
 
+  def whisper_bookmark
+    @customer = Customer.find(current_customer.id)
+    bookmarks = WhisperBookmark.where(customer_id: current_customer.id).pluck(:whisper_id)
+    @whisper_bookmarks = Whisper.find(bookmarks)
+  end
+
   def workout
     @customer = Customer.find(params[:id])
     @workouts = @customer.workouts.all
+  end
+
+  def workout_bookmark
+    @customer = Customer.find(params[:id])
+    bookmarks = WorkoutBookmark.where(customer_id: current_customer.id).pluck(:workout_id)
+    @workout_bookmarks = Workout.find(bookmarks)
   end
 
   def edit

@@ -17,6 +17,6 @@
 <%= link_to "トレーニング一覧", workouts_customer_path %>
 
 <% if customer.id == current_customer.id %>
-  <%= link_to "ブックマーク一覧", bookmarks_path %>
-  <%= link_to "トレーニングリスト", workout_lists_path %>
+  <%= link_to "ブックマーク一覧", workout_bookmarks_customer_path %>
+  <!--%= link_to "トレーニングリスト", workout_lists_path %>-->
 <% end %>
