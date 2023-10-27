@@ -1,10 +1,12 @@
 <h3>みんなのトレーニング</h3>
 <%= render "search", workout: @workout %>
-<%= link_to new_workout_path do %>
-  <span class="fa-stack">
-    <i class="fa-solid fa-circle fa-stack-2x" style="color: #98dfec;"></i>
-    <i class="fa-solid fa-plus fa-stack-1x fa-inverse"></i>
-  </span>
+<% if customer_signed_in? %>
+  <%= link_to new_workout_path do %>
+    <span class="fa-stack">
+      <i class="fa-solid fa-circle fa-stack-2x" style="color: #98dfec;"></i>
+      <i class="fa-solid fa-plus fa-stack-1x fa-inverse"></i>
+    </span>
+  <% end %>
 <% end %>
 <table>
   <% @workouts.each do |workout| %>

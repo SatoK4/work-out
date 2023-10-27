@@ -1,9 +1,11 @@
 <h3>みんなのつぶやき</h3>
-<%= link_to new_whisper_path do %>
-  <span class="fa-stack">
-    <i class="fa-solid fa-circle fa-stack-2x" style="color: #98dfec;"></i>
-    <i class="fa-solid fa-plus fa-stack-1x fa-inverse"></i>
-  </span>
+<% if customer_signed_in? %>
+  <%= link_to new_whisper_path do %>
+    <span class="fa-stack">
+      <i class="fa-solid fa-circle fa-stack-2x" style="color: #98dfec;"></i>
+      <i class="fa-solid fa-plus fa-stack-1x fa-inverse"></i>
+    </span>
+  <% end %>
 <% end %>
 
 <table>

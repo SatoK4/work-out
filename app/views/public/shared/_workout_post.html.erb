@@ -3,7 +3,7 @@
     <%= render "public/shared/icon", customer: workout.customer %>
     <%= workout.customer.nickname %>
   <% end %>
-  <% if controller.action_name == 'show' && workout.customer_id == current_customer.id %>
+  <% if customer_signed_in? && controller.action_name == 'show' && workout.customer_id == current_customer.id %>
     <%= link_to "削除する", workout_path, method: :delete %>
   <% end %>
 </div>
