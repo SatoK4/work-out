@@ -9,7 +9,7 @@
 </div>
 <div>
   <%= link_to whisper_path(whisper.id) do %>
-    <%= whisper.content %>
+    <%= simple_format(whisper.content) %>
   <% end %>
 </div>
 <div>

@@ -6,7 +6,7 @@
 <%= customer.nickname %>
 
 <% if customer.self_introduction.present? %>
-    <%= customer.self_introduction %>
+  <%= simple_format(customer.self_introduction) %>
 <% end %>
 
 <% if customer_signed_in? && customer.id == current_customer.id %>

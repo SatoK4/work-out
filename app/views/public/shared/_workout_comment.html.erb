@@ -10,7 +10,7 @@
     <%= render "public/shared/icon", customer: workout_comment.customer %>
     <%= workout_comment.customer.nickname %>
   <% end %>
-  <%= workout_comment.comment %>
+  <%= simple_format(workout_comment.comment) %>
   <%= l workout_comment.created_at, format: :short %>
   <% if customer_signed_in? && workout_comment.customer_id == current_customer.id %>
     <%= link_to "コメントを削除", workout_workout_comment_path(workout_comment.workout, workout_comment), method: :delete %>

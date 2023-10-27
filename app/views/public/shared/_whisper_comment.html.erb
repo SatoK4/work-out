@@ -10,7 +10,7 @@
     <%= render "public/shared/icon", customer: whisper_comment.customer %>
     <%= whisper_comment.customer.nickname %>
   <% end %>
-  <%= whisper_comment.comment %>
+  <%= simple_format(whisper_comment.comment) %>
   <%= l whisper_comment.created_at, format: :short %>
   <% if customer_signed_in? && whisper_comment.customer_id == current_customer.id %>
     <%= link_to "コメントを削除", whisper_whisper_comment_path(whisper_comment.whisper, whisper_comment), method: :delete %>

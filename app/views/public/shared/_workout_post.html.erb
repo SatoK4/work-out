@@ -13,7 +13,7 @@
   <% end %>
 </div>
 <div>
-  <%= workout.introduction %>
+  <%= simple_format(workout.introduction) %>
 </div>
 <div>
   <% if workout.images.present? %>
