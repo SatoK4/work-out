@@ -12,7 +12,7 @@
   <% end %>
   <%= whisper_comment.comment %>
   <%= l whisper_comment.created_at, format: :short %>
-  <% if whisper_comment.customer_id == current_customer.id %>
+  <% if customer_signed_in? && whisper_comment.customer_id == current_customer.id %>
     <%= link_to "コメントを削除", whisper_whisper_comment_path(whisper_comment.whisper, whisper_comment), method: :delete %>
   <% end %>
 <% end %>
