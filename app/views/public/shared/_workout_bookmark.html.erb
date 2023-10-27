@@ -1,15 +1,23 @@
-<% if current_customer != workout.customer %>
-  <% if workout.find_bookmark(current_customer).blank? %>
-  <!--お気に入り登録-->
-    <%= link_to workout_workout_bookmarks_path(workout), method: :post do %>
-      <i class="fa-regular fa-heart"></i>
+<% if customer_signed_in? %>
+  <% if current_customer != workout.customer %>
+    <% if workout.find_bookmark(current_customer).blank? %>
+    <!--お気に入り登録-->
+      <%= link_to workout_workout_bookmarks_path(workout), method: :post do %>
+        <i class="fa-regular fa-heart"></i>
+      <% end %>
+      <%= workout.workout_bookmarks.count %>
+    <% else %>
+    <!--お気に入り削除-->
+      <%= link_to workout_workout_bookmark_path(workout, workout.find_bookmark(current_customer)), method: :delete do %>
+        <i class="fa-solid fa-heart"></i>
+      <% end %>
+      <%= workout.workout_bookmarks.count %>
     <% end %>
-    <%= workout.workout_bookmarks.count %>
   <% else %>
-  <!--お気に入り削除-->
-    <%= link_to workout_workout_bookmark_path(workout, workout.find_bookmark(current_customer)), method: :delete do %>
-      <i class="fa-solid fa-heart"></i>
-    <% end %>
+    <i class="fa-regular fa-heart"></i>
     <%= workout.workout_bookmarks.count %>
   <% end %>
+<% else %>
+  <i class="fa-regular fa-heart"></i>
+  <%= workout.workout_bookmarks.count %>
 <% end %>

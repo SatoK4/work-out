@@ -1,3 +1,6 @@
 <h2>top</h2>
 <h3>人気トレーニングTop5</h3>
-<h3>人気つぶやきTop5</h3>
+<% @workout_bookmark_ranks.each.with_index(1) do |workout, i| %>
+  第<%= i %>位
+  <%= render "public/shared/workout_post", workout: workout %>
+<% end %>
