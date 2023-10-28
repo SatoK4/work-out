@@ -3,21 +3,21 @@
     <% if workout.find_bookmark(current_customer).blank? %>
     <!--お気に入り登録-->
       <%= link_to workout_workout_bookmarks_path(workout), method: :post do %>
-        <i class="fa-regular fa-heart"></i>
+        <i class="fa-regular fa-heart" style="color: #a4a4a4"></i>
       <% end %>
       <%= workout.workout_bookmarks.count %>
     <% else %>
     <!--お気に入り削除-->
       <%= link_to workout_workout_bookmark_path(workout, workout.find_bookmark(current_customer)), method: :delete do %>
-        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-heart" style="color: #ED1A3D"></i>
       <% end %>
       <%= workout.workout_bookmarks.count %>
     <% end %>
   <% else %>
-    <i class="fa-regular fa-heart"></i>
+    <i class="fa-regular fa-heart" style="color: #181818"></i>
     <%= workout.workout_bookmarks.count %>
   <% end %>
 <% else %>
-  <i class="fa-regular fa-heart"></i>
+  <i class="fa-regular fa-heart" style="color: #181818"></i>
   <%= workout.workout_bookmarks.count %>
 <% end %>

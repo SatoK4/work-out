@@ -1,30 +1,42 @@
-<%= flash[:alert] %>
-<h3>トレーニング新規登録</h3>
+<div class="container">
+  <%= flash[:alert] %>
+  <h3><strong>トレーニング新規投稿</strong></h3>
 
-<%= form_with model: @workout do |f| %>
-  <table>
-    <tr>
-      <td><%= f.label :"イメージ画像" %></td><!--プレビューを表示-->
-      <td><%= f.file_field :images, multiple: true %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :"トレーニング名" %></td>
-      <td><%= f.text_field :name %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :"トレーニング内容" %></td>
-      <td><%= f.text_area :introduction %></td>
-    </tr>
-    <tr>
-      <td>
+  <div class="row">
+    <table class="table table-sm table-borderless">
+      <%= form_with model: @workout do |f| %>
+        <div class="form-group">
+          <tr>
+            <td><%= f.label :"イメージ画像" %></td>
+            <td><%= f.file_field :images, multiple: true %></td>
+          </tr>
+        </div>
+        <div class="form-group">
+          <tr>
+            <td><%= f.label :"トレーニング名" %></td>
+            <td><%= f.text_field :name, class: "form-control w-75" %></td>
+          </tr>
+        </div>
+        <div class="form-group">
+          <tr>
+            <td><%= f.label :"トレーニング内容" %></td>
+            <td><%= f.text_area :introduction, class: "form-control w-75" %></td>
+          </tr>
+        </div>
+    </table>
+      <div class="col-12">
         <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
-          <%= tag.label do %>
-            <%= tag.check_box %>
-            <%= tag.text %>
-          <% end %>
+        <%= tag.label do %>
+          <%= tag.check_box %>
+          <%= tag.text %>
         <% end %>
-      </td>
-    </tr>
-  </table>
-  <%= f.submit '投稿' %>
-<% end %>
+      <% end %>
+      </div>
+      <div class="form-group">
+        <%= f.submit '投稿する', class: "btn btn-primary text-center" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!--画像から内容まではテーブルで囲って見た目を整える-->

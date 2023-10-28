@@ -1,18 +1,36 @@
-<div>
-  <%= form_with model: [workout, workout_comment] do |f| %>
-    <%= f.text_area :comment, cols: '50', placeholder: "コメントを記入してください。" %>
-    <%= f.submit "送信する" %>
-  <% end %>
-</div>
+<div class="container pt-3">
+  <div class="row">
+    <div class="form-group">
+      <%= form_with model: [workout, workout_comment] do |f| %>
+        <div class="col-xs-8">
+          <%= f.text_area :comment, class: "form-control", cols: '50', placeholder: "コメントを記入してください。" %>
+        </div>
+        <div class="col-xs-4">
+          <%= f.submit "送信する", class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<% workout.workout_comments.each do |workout_comment| %>
-  <%= link_to workouts_customer_path(workout_comment.customer_id) do %>
-    <%= render "public/shared/icon", customer: workout_comment.customer %>
-    <%= workout_comment.customer.nickname %>
-  <% end %>
-  <%= simple_format(workout_comment.comment) %>
-  <%= l workout_comment.created_at, format: :short %>
-  <% if customer_signed_in? && workout_comment.customer_id == current_customer.id %>
-    <%= link_to "コメントを削除", workout_workout_comment_path(workout_comment.workout, workout_comment), method: :delete %>
-  <% end %>
-<% end %>
+  <div class="row">
+    <table class="table table_borderd", style="table-layout:fixed;width:100%;">
+      <% workout.workout_comments.each do |workout_comment| %>
+        <tr>
+          <td class="col-3">
+            <%= link_to workouts_customer_path(workout_comment.customer_id) do %>
+              <%= render "public/shared/icon", customer: workout_comment.customer %>
+              <%= workout_comment.customer.nickname %>
+            <% end %>
+          </td>
+          <td class="col-5"><%= simple_format(workout_comment.comment) %></td>
+          <td class="col-2"><%= l workout_comment.created_at, format: :short %></td>
+          <td class="col-2">
+            <% if customer_signed_in? && workout_comment.customer_id == current_customer.id %>
+              <%= link_to "コメントを削除", workout_workout_comment_path(workout_comment.workout, workout_comment), method: :delete %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
