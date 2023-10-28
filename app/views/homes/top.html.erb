@@ -1,6 +1,29 @@
-<h2>top</h2>
-<h3>人気トレーニングTop5</h3>
-<% @workout_bookmark_ranks.each.with_index(1) do |workout, i| %>
-  第<%= i %>位
-  <%= render "public/shared/workout_post", workout: workout %>
-<% end %>
+<div class="container">
+  <!--<h3>このサイトの使い方</h3>-->
+  <h3>人気トレーニングTop5</h3>
+  <div class="row">
+    <table class="table table_borderd">
+      <% @workout_bookmark_ranks.each.with_index(1) do |workout, i| %>
+        <tr>
+          <td>
+            <% if i == 1 %>
+              <i class="fa-solid fa-crown fa-lg" style="color: #ffc926"></i>
+              <strong>第<%= i %>位</strong>
+            <% elsif i == 2 %>
+              <i class="fa-solid fa-crown fa-lg" style="color: #c9caca"></i>
+              <strong>第<%= i %>位</strong>
+            <% elsif i == 3 %>
+              <i class="fa-solid fa-crown fa-lg" style="color: #b87333"></i>
+              <strong>第<%= i %>位</strong>
+            <% else %>
+              <strong>第<%= i %>位</strong>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= render "public/shared/workout_post", workout: workout %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
