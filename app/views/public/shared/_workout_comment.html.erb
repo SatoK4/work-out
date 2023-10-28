@@ -17,7 +17,7 @@
       <% workout.workout_comments.each do |workout_comment| %>
         <tr>
           <td class="col-3">
-            <%= link_to workouts_customer_path(workout_comment.customer_id) do %>
+            <%= link_to workouts_customer_path(workout_comment.customer_id), class: "link" do %>
               <%= render "public/shared/icon", customer: workout_comment.customer %>
               <%= workout_comment.customer.nickname %>
             <% end %>
