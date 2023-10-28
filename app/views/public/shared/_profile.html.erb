@@ -1,22 +1,44 @@
-<% if customer.image.present? %>
-  <%= image_tag customer.image_url(:profile) %>
-<% else %>
-  <%= image_tag 'no-icon.png', size: "100x100" %>
-<% end %>
-<%= customer.nickname %>
+<div class="row">
+  <div class="col-3 text-center">
+    <% if customer.image.present? %>
+      <%= image_tag customer.image_url(:profile) %>
+    <% else %>
+      <%= image_tag 'no-icon.png', size: "100x100" %>
+    <% end %>
+  </div>
+  <div class="col-9">
+    <div class="row">
+      <div class="col-8 h4 d-flex align-items-center"><%= customer.nickname %></div>
+      <div class="col-4 d-flex align-items-center">
+        <% if customer_signed_in? && customer.id == current_customer.id %>
+          <%= link_to "プロフィールを編集", edit_customer_path %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-9">
+        <% if customer.self_introduction.present? %>
+          <%= simple_format(customer.self_introduction) %>
+        <% end %>
+      </div>
+      <div class="col-3"></div>
+    </div>
+  </div>
+</div>
 
-<% if customer.self_introduction.present? %>
-  <%= simple_format(customer.self_introduction) %>
-<% end %>
-
-<% if customer_signed_in? && customer.id == current_customer.id %>
-    <%= link_to "編集", edit_customer_path %>
-<% end %>
-
-<%= link_to "つぶやき一覧", whispers_customer_path %>
-<%= link_to "トレーニング一覧", workouts_customer_path %>
-
-<% if customer_signed_in? && customer.id == current_customer.id %>
-  <%= link_to "ブックマーク一覧", workout_bookmarks_customer_path %>
-  <!--%= link_to "トレーニングリスト", workout_lists_path %>-->
-<% end %>
+<div class="row my-2">
+  <% if customer_signed_in? && customer.id == current_customer.id %>
+    <div class="col-1"></div>
+    <div class="col-3 text-center"><%= link_to "つぶやき一覧", whispers_customer_path, class: "h4 font-weight-bold" %></div>
+    |
+    <div class="col-3 text-center"><%= link_to "トレーニング一覧", workouts_customer_path, class: "h4 font-weight-bold" %></div>
+    |
+    <div class="col-3 text-center"><%= link_to "ブックマーク一覧", workout_bookmarks_customer_path, class: "h4 font-weight-bold" %></div>
+    <div class="col-1"></div>
+    <!--%= link_to "トレーニングリスト", workout_lists_path %>-->
+  <% else %>
+    <div class="col-5 text-center"><%= link_to "つぶやき一覧", whispers_customer_path, class: "h4 font-weight-bold" %></div>
+    |
+    <div class="col-5 text-center"><%= link_to "トレーニング一覧", workouts_customer_path, class: "h4 font-weight-bold" %></div>
+  <% end %>
+</div>

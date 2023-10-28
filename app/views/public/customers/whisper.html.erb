@@ -1,15 +1,22 @@
-<%= flash[:success] %>
-<%= render 'public/shared/profile', customer: @customer %>
-<h3><%= @customer.nickname %>のつぶやき</h3>
+<div class="container">
+  <div class="row"><%= flash[:success] %></div>
 
-<% if @whispers.present? %>
-  <table>
-    <% @whispers.each do |whisper| %>
-      <tr>
-        <td><%= render 'public/shared/whisper_post', whisper: whisper %></td>
-      </tr>
-    <% end %>
-  </table>
-<% else %>
-  <%= @customer.nickname %>さんはまだつぶやいていません。
-<% end %>
+  <%= render 'public/shared/profile', customer: @customer %>
+
+  <div class="row">
+    <h3 class="font-weight-bold"><%= @customer.nickname %>のつぶやき</h3>
+  </div>
+
+
+  <% if @whispers.present? %>
+    <table class="table table-borderd">
+      <% @whispers.each do |whisper| %>
+        <tr>
+          <td><%= render 'public/shared/whisper_post', whisper: whisper %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <%= @customer.nickname %>さんはまだつぶやいていません。
+  <% end %>
+</div>

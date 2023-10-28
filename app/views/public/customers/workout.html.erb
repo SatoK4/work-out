@@ -1,15 +1,21 @@
-<%= flash[:success] %>
-<%= render 'public/shared/profile', customer: @customer %>
-<h3><%= @customer.nickname %>のトレーニング</h3>
+<div class="container">
+  <div class="row"><%= flash[:success] %></div>
 
-<% if @workouts.present? %>
-  <table>
-    <% @workouts.each do |workout| %>
-      <tr>
-        <td><%= render 'public/shared/workout_post', workout: workout %></td>
-      </tr>
-    <% end %>
-  </table>
-<% else %>
-  <%= @customer.nickname %>さんはまだトレーニングを投稿していません。
-<% end %>
+  <%= render 'public/shared/profile', customer: @customer %>
+
+  <div class="row">
+    <h3 class="font-weight-bold"><%= @customer.nickname %>のトレーニング</h3>
+  </div>
+
+  <% if @workouts.present? %>
+    <table class="table table-borderd">
+      <% @workouts.each do |workout| %>
+        <tr>
+          <td><%= render 'public/shared/workout_post', workout: workout %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <%= @customer.nickname %>さんはまだトレーニングを投稿していません。
+  <% end %>
+</div>

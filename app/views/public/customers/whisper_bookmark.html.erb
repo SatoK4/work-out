@@ -1,12 +1,24 @@
-<%= render 'public/shared/profile', customer: @customer %>
-<h3><%= @customer.nickname %>のブックマーク一覧</h3>
-<div>
-  <h4>～つぶやき～</h4>
-  <%= link_to "トレーニングのブックマーク一覧へ", workout_bookmarks_customer_path(current_customer.id) %>
-</div>
+<div class="container">
+  <%= render 'public/shared/profile', customer: @customer %>
 
-<% if @whisper_bookmarks.length != 0 %>
-  <% @whisper_bookmarks.each do |whisper| %>
-    <%= render "public/shared/whisper_post", whisper: whisper %>
+  <div class="row">
+    <h3 class="font-weight-bold"><%= @customer.nickname %>のブックマーク一覧</h3>
+  </div>
+
+  <div class="row">
+    <div class="col-3"><h4>～つぶやき～</h4></div>
+    <div class="col-9 text-right">
+      <%= link_to "トレーニングのブックマーク一覧へ", workout_bookmarks_customer_path(current_customer.id) %>
+    </div>
+  </div>
+
+  <% if @whisper_bookmarks.length != 0 %>
+    <table class="table table-borderd">
+      <% @whisper_bookmarks.each do |whisper| %>
+        <tr>
+          <td><%= render "public/shared/whisper_post", whisper: whisper %></td>
+        </tr>
+      <% end %>
+    </table>
   <% end %>
-<% end %>
+</div>
