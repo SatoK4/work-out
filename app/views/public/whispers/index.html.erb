@@ -1,19 +1,27 @@
-<h3>みんなのつぶやき</h3>
-<% if customer_signed_in? %>
-  <%= link_to new_whisper_path do %>
-    <span class="fa-stack">
-      <i class="fa-solid fa-circle fa-stack-2x" style="color: #98dfec;"></i>
-      <i class="fa-solid fa-plus fa-stack-1x fa-inverse"></i>
-    </span>
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="row py-3">
+    <div class="col-5">
+      <h3 class="font-weight-bold">みんなのつぶやき</h3>
+    </div>
+    <div class="col-7">
+      <% if customer_signed_in? %>
+        <%= link_to new_whisper_path do %>
+          <span class="fa-stack">
+            <i class="fa-solid fa-circle fa-stack-2x" style="color: #98dfec;"></i>
+            <i class="fa-solid fa-plus fa-stack-1x fa-inverse"></i>
+          </span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
-<table>
-  <% @whispers.each do |whisper| %>
-    <tr>
-      <td>
-        <%= render 'public/shared/whisper_post', whisper: whisper %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+  <table class="table table_borderd">
+    <% @whispers.each do |whisper| %>
+      <tr>
+        <td>
+          <%= render 'public/shared/whisper_post', whisper: whisper %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,18 +1,36 @@
-<div>
-  <%= form_with model: [whisper, whisper_comment] do |f| %>
-    <%= f.text_area :comment, cols: '50', placeholder: "コメントを記入してください。" %>
-    <%= f.submit "送信する" %>
-  <% end %>
-</div>
+<div class="container pt-3">
+  <div class="row">
+    <div>
+      <%= form_with model: [whisper, whisper_comment] do |f| %>
+      <div class="col-xs-8">
+        <%= f.text_area :comment, class: "form-control", cols: '50', placeholder: "コメントを記入してください。" %>
+      </div>
+      <div class="col-xs-4">
+        <%= f.submit "送信する" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 
-<% whisper.whisper_comments.each do |whisper_comment| %>
-  <%= link_to whispers_customer_path(whisper_comment.customer_id) do %>
-    <%= render "public/shared/icon", customer: whisper_comment.customer %>
-    <%= whisper_comment.customer.nickname %>
-  <% end %>
-  <%= simple_format(whisper_comment.comment) %>
-  <%= l whisper_comment.created_at, format: :short %>
-  <% if customer_signed_in? && whisper_comment.customer_id == current_customer.id %>
-    <%= link_to "コメントを削除", whisper_whisper_comment_path(whisper_comment.whisper, whisper_comment), method: :delete %>
-  <% end %>
-<% end %>
+  <div class="row">
+    <table class="table table_borderd", style="table-layout:fixed;width:100%;">
+      <% whisper.whisper_comments.each do |whisper_comment| %>
+        <tr>
+          <td class="col-3">
+            <%= link_to whispers_customer_path(whisper_comment.customer_id), class: "link" do %>
+              <%= render "public/shared/icon", customer: whisper_comment.customer %>
+              <%= whisper_comment.customer.nickname %>
+            <% end %>
+          </td>
+          <td class="col-5"><%= simple_format(whisper_comment.comment) %></td>
+          <td class="col-2"><%= l whisper_comment.created_at, format: :short %></td>
+          <td class="col-2">
+            <% if customer_signed_in? && whisper_comment.customer_id == current_customer.id %>
+              <%= link_to "コメントを削除", whisper_whisper_comment_path(whisper_comment.whisper, whisper_comment), method: :delete %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

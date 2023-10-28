@@ -1,36 +1,39 @@
-<div>
-  <%= link_to whispers_customer_path(whisper.customer_id) do %>
-    <%= render "public/shared/icon", customer: whisper.customer %>
-    <%= whisper.customer.nickname %>
-  <% end %>
-  <% if customer_signed_in? && controller.action_name == 'show' && whisper.customer_id == current_customer.id %>
-    <%= link_to "削除する", whisper_path, method: :delete %>
-  <% end %>
-</div>
-<div>
-  <%= link_to whisper_path(whisper.id) do %>
-    <%= simple_format(whisper.content) %>
-  <% end %>
-</div>
-<div>
-  <% if whisper.images.present? %>
-    <% whisper.images.each do |image| %>
-      <%= image_tag image.to_s %>
+<div class="container">
+  <div class="row">
+    <%= link_to whispers_customer_path(whisper.customer_id), class: "link" do %>
+      <%= render "public/shared/icon", customer: whisper.customer %>
+      <%= whisper.customer.nickname %>
     <% end %>
+    <% if customer_signed_in? && controller.action_name == 'show' && whisper.customer_id == current_customer.id %>
+      <%= link_to "削除する", whisper_path, class: "text-right", method: :delete %>
+    <% end %>
+  </div>
+  <div class="row">
+    <%= link_to whisper_path(whisper.id), class: "link" do %>
+      <%= simple_format(whisper.content) %>
+    <% end %>
+  </div>
+  <div class="row">
+    <% if whisper.images.present? %>
+      <% whisper.images.each do |image| %>
+        <%= image_tag image.to_s %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <i class="fa-regular fa-comment"></i>
+      <%= whisper.whisper_comments.count %>
+    </div>
+    <div class="col-4">
+      <%= render "public/shared/whisper_bookmark", whisper: whisper %>
+    </div>
+    <div class="col-4 text-right">
+      <%= l whisper.created_at, format: :short %>
+    </div>
+  </div>
+
+  <% if controller.action_name == 'show' %>
+    <%= render partial: 'public/shared/whisper_comment', locals: { whisper: whisper, whisper_comment: whisper_comment } %>
   <% end %>
 </div>
-<div>
-  <div>
-    <i class="fa-regular fa-comment"></i>
-    <%= whisper.whisper_comments.count %>
-  </div>
-  <div>
-    <%= render "public/shared/whisper_bookmark", whisper: whisper %>
-  </div>
-  <!--リストに追加-->
-  <%= l whisper.created_at, format: :short %>
-</div>
-
-<% if controller.action_name == 'show' %>
-  <%= render partial: 'public/shared/whisper_comment', locals: { whisper: whisper, whisper_comment: whisper_comment } %>
-<% end %>
