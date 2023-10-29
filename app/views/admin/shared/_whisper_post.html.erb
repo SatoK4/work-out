@@ -1,36 +1,44 @@
-<div>
-  <%= link_to admin_customer_path(whisper.customer_id) do %>
-    <%= render "admin/shared/small_icon", customer: whisper.customer %>
-    <%= whisper.customer.nickname %>
-  <% end %>
-  <% if controller.action_name == 'show' %>
-    <%= link_to "削除する", admin_whisper_path, method: :delete %>
-  <% end %>
-</div>
-<div>
-  <%= link_to admin_whisper_path(whisper.id) do %>
-    <%= whisper.content %>
-  <% end %>
-</div>
-<div>
-  <% if whisper.images.present? %>
-    <% whisper.images.each do |image| %>
-      <%= image_tag image.to_s %>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <%= link_to admin_customer_path(whisper.customer_id), class: "link" do %>
+        <%= render "admin/shared/small_icon", customer: whisper.customer %>
+        <%= whisper.customer.nickname %>
+      <% end %>
+    </div>
+    <div class="col-4 d-flex align-items-end justify-content-center">
+      <% if controller.action_name == 'show' %>
+        <%= link_to "投稿を削除する", admin_whisper_path, class: "btn btn-sm btn-danger", method: :delete %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <%= link_to admin_whisper_path(whisper.id), class: "link" do %>
+      <%= simple_format(whisper.content) %>
     <% end %>
+  </div>
+  <div class="row">
+    <% if whisper.images.present? %>
+      <% whisper.images.each do |image| %>
+        <div class="mr-2"><%= image_tag image.to_s %></div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <i class="fa-regular fa-comment"></i>
+      <%= whisper.whisper_comments.count %>
+    </div>
+    <div class="col-4">
+      <i class="fa-regular fa-heart"></i>
+      <%= whisper.whisper_bookmarks.count %>
+    </div>
+    <div class="col-4 text-right">
+      <%= l whisper.created_at, format: :short %>
+    </div>
+  </div>
+
+  <% if controller.action_name == 'show' %>
+    <%= render partial: 'admin/shared/whisper_comment', locals: { whisper: whisper } %>
   <% end %>
 </div>
-<div>
-  <div>
-    <i class="fa-regular fa-comment"></i>
-    <%= whisper.whisper_comments.count %>
-  </div>
-  <div>
-    <i class="fa-regular fa-heart"></i>
-    <%= whisper.whisper_bookmarks.count %>
-  </div>
-  <!--リストに追加-->
-  <%= l whisper.created_at, format: :short %>
-</div>
-<% if controller.action_name == 'show' %>
-  <%= render partial: 'admin/shared/whisper_comment', locals: { whisper: whisper } %>
-<% end %>

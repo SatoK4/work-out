@@ -1,21 +1,46 @@
-<%= render 'admin/shared/large_icon', customer: @customer %>
-<%= @customer.nickname %>
-<table>
-  <tr>
-    <td>自己紹介文</td>
-    <td><%= @customer.self_introduction %></td>
-  </tr>
-  <tr>
-    <td>会員ステータス</td>
-    <td><%= @customer.status %></td>
-    <td>
-      <% if @customer.is_deleted %>
-        <%= link_to "有効にする", admin_customer_withdrawal_path(@customer.id), method: :patch %>
-      <% else %>
-        <%= link_to "退会させる", admin_customer_withdrawal_path(@customer.id), method: :patch %>
-      <% end %>
-    </td>
-  </tr>
-</table>
-<%= link_to "つぶやき一覧へ", admin_customer_whispers_path %>
-<%= link_to "トレーニング一覧へ", admin_customer_workouts_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-2 d-flex align-items-center justify-content-center">
+      <%= render 'admin/shared/large_icon', customer: @customer %>
+    </div>
+    <div class="col-10">
+      <div class="row p-2">
+        <div class="col-8 text-center">
+          <p><strong class="h4"><%= @customer.nickname %></strong>さんのユーザー情報</p>
+        </div>
+      </div>
+      <div class="row p-2">
+        <div class="col-3 text-right">会員ステータス</div>
+        <div class="col-3">
+          <% if @customer.status == "有効" %>
+            <p class="text-success font-weight-bold">有効</p>
+          <% else %>
+            <p class="text-danger font-weight-bold">無効</p>
+          <% end %>
+        </div>
+        <div class="col-3">
+          <% if @customer.is_deleted %>
+            <%= link_to "有効にする", admin_customer_withdrawal_path(@customer.id), class: "btn btn-sm btn-success", method: :patch %>
+          <% else %>
+            <%= link_to "退会させる", admin_customer_withdrawal_path(@customer.id), class: "btn btn-sm btn-danger", method: :patch %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-10"><%= simple_format(@customer.self_introduction) %></div>
+  </div>
+
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-2 font-weight-bold h6">
+      <%= link_to "つぶやき一覧へ", admin_customer_whispers_path %>
+    </div>
+    <div class="col-2 font-weight-bold h6">
+      <%= link_to "トレーニング一覧へ", admin_customer_workouts_path %>
+    </div>
+  </div>
+</div>

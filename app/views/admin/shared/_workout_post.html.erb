@@ -1,44 +1,55 @@
-<div>
-  <%= link_to admin_customer_path(workout.customer_id) do %>
-    <%= render "admin/shared/small_icon", customer: workout.customer %>
-    <%= workout.customer.nickname %>
-  <% end %>
-  <% if controller.action_name == 'show' %>
-    <%= link_to "削除する", admin_workout_path, method: :delete %>
-  <% end %>
-</div>
-<div>
-  <%= link_to admin_workout_path(workout.id) do %>
-    <%= workout.name %>
-  <% end %>
-</div>
-<div>
-  <%= workout.introduction %>
-</div>
-<div>
-  <% if workout.images.present? %>
-    <% workout.images.each do |image| %>
-      <%= image_tag image.to_s %>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <%= link_to admin_customer_path(workout.customer_id), class: "link" do %>
+        <%= render "admin/shared/small_icon", customer: workout.customer %>
+        <%= workout.customer.nickname %>
+      <% end %>
+    </div>
+    <div class="col-4 d-flex align-items-end justify-content-center">
+      <% if controller.action_name == 'show' %>
+        <%= link_to "投稿を削除する", admin_workout_path, class: "btn btn-sm btn-danger", method: :delete %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <%= link_to admin_workout_path(workout.id), class: "font-weight-bold link" do %>
+      <%= workout.name %>
     <% end %>
+  </div>
+  <div class="row">
+    <%= simple_format(workout.introduction) %>
+  </div>
+  <div class="row">
+    <% if workout.images.present? %>
+      <% workout.images.each do |image| %>
+        <div class="mr-2"><%= image_tag image.to_s %></div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="row">
+    <% workout.tags.each do |tag| %>
+      <div class="mr-3">
+        <i class="fa-solid fa-tag"></i>
+        <%= tag.tag_name %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <i class="fa-regular fa-comment"></i>
+      <%= workout.workout_comments.count %>
+    </div>
+    <div class="col-4">
+      <i class="fa-regular fa-heart"></i>
+      <%= workout.workout_bookmarks.count %>
+    </div>
+    <!--リストに追加-->
+    <div class="col-4 text-right">
+      <%= l workout.created_at, format: :short %>
+    </div>
+  </div>
+  <% if controller.action_name == 'show' %>
+    <%= render partial: 'admin/shared/workout_comment', locals: { workout: workout } %>
   <% end %>
 </div>
-<div>
-  <% workout.tags.each do |tag| %>
-    <%= tag.tag_name %>
-  <% end %>
-</div>
-<div>
-  <div>
-    <i class="fa-regular fa-comment"></i>
-    <%= workout.workout_comments.count %>
-  </div>
-  <div>
-    <i class="fa-regular fa-heart"></i>
-    <%= workout.workout_bookmarks.count %>
-  </div>
-  <!--リストに追加-->
-  <%= l workout.created_at, format: :short %>
-</div>
-<% if controller.action_name == 'show' %>
-  <%= render partial: 'admin/shared/workout_comment', locals: { workout: workout } %>
-<% end %>

@@ -1,15 +1,23 @@
-<h3><%= @customer.nickname %>のつぶやき</h3>
-<%= link_to "トレーニング一覧へ", admin_customer_workouts_path %>
-<% if @whispers.present? %>
-  <table>
-    <% @whispers.each do |whisper| %>
-      <tr>
-        <td>
-          <%= render "admin/shared/whisper_post", whisper: whisper %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-<% else %>
-  <p>あなたはつぶやいていません。</p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h3 class="font-weight-bold"><%= @customer.nickname %>のつぶやき</h3>
+    </div>
+    <div class="col-6 d-flex align-items-end justify-content-end">
+      <%= link_to "トレーニング一覧へ", admin_customer_workouts_path %>
+    </div>
+  </div>
+  <% if @whispers.present? %>
+    <table class="table">
+      <% @whispers.each do |whisper| %>
+        <tr>
+          <td>
+            <%= render "admin/shared/whisper_post", whisper: whisper %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <p>あなたはつぶやいていません。</p>
+  <% end %>
+</div>

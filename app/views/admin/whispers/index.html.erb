@@ -1,10 +1,14 @@
-<h3>みんなのつぶやき</h3>
-<table>
-  <% @whispers.each do |whisper| %>
-    <tr>
-      <td>
-        <%= render "admin/shared/whisper_post", whisper: whisper %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row">
+    <h3 class="font-weight-bold">みんなのつぶやき</h3>
+  </div>
+  <table class="table">
+    <% @whispers.each do |whisper| %>
+      <tr>
+        <td>
+          <%= render "admin/shared/whisper_post", whisper: whisper %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

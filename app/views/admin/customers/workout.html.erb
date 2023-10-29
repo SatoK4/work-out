@@ -1,15 +1,23 @@
-<h3><%= @customer.nickname %>のトレーニング</h3>
-<%= link_to "つぶやき一覧へ", admin_customer_whispers_path %>
-<% if @workouts.present? %>
-  <table>
-    <% @workouts.each do |workout| %>
-      <tr>
-        <td>
-          <%= render "admin/shared/workout_post", workout: workout %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-<% else %>
-  <p>あなたはまだトレーニングを投稿していません。</p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h3 class="font-weight-bold"><%= @customer.nickname %>のトレーニング</h3>
+    </div>
+    <div class="col-6 d-flex align-items-end justify-content-end">
+      <%= link_to "つぶやき一覧へ", admin_customer_whispers_path %>
+    </div>
+  </div>
+  <% if @workouts.present? %>
+    <table class="table">
+      <% @workouts.each do |workout| %>
+        <tr>
+          <td>
+            <%= render "admin/shared/workout_post", workout: workout %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <p>あなたはまだトレーニングを投稿していません。</p>
+  <% end %>
+</div>

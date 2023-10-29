@@ -1,9 +1,19 @@
-<% workout.workout_comments.each do |workout_comment| %>
-  <%= link_to admin_customer_path(workout_comment.customer_id) do %>
-    <%= render "admin/shared/small_icon", customer: workout_comment.customer %>
-    <%= workout_comment.customer.nickname %>
-  <% end %>
-  <%= workout_comment.comment %>
-  <%= l workout_comment.created_at, format: :short %>
-  <%= link_to "コメントを削除", admin_workout_workout_comment_path(workout_comment.workout, workout_comment), method: :delete %>
-<% end %>
+<div class="container pt-3">
+  <div class="row">
+    <table class="table", style="table-layout:fixed;width:100%">
+      <% workout.workout_comments.each do |workout_comment| %>
+        <tr>
+          <td class="col-3">
+            <%= link_to admin_customer_path(workout_comment.customer_id), class: "link" do %>
+              <%= render "admin/shared/small_icon", customer: workout_comment.customer %>
+              <%= workout_comment.customer.nickname %>
+            <% end %>
+          </td>
+          <td class="col-5 align-middle"><%= simple_format(workout_comment.comment) %></td>
+          <td class="col-2 align-middle"><%= l workout_comment.created_at, format: :short %></td>
+          <td class="col-2 align-middle"><%= link_to "コメントを削除", admin_workout_workout_comment_path(workout_comment.workout, workout_comment), class: "btn btn-sm btn-danger", method: :delete %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

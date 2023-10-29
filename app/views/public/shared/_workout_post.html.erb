@@ -1,12 +1,16 @@
 <div class="container">
   <div class="row">
-    <%= link_to workouts_customer_path(workout.customer_id), class: "link" do %>
-      <%= render "public/shared/icon", customer: workout.customer %>
-      <%= workout.customer.nickname %>
-    <% end %>
-    <% if customer_signed_in? && controller.action_name == 'show' && workout.customer_id == current_customer.id %>
-      <%= link_to "削除する", workout_path, method: :delete %>
-    <% end %>
+    <div class="col-8">
+      <%= link_to workouts_customer_path(workout.customer_id), class: "link" do %>
+        <%= render "public/shared/icon", customer: workout.customer %>
+        <%= workout.customer.nickname %>
+      <% end %>
+    </div>
+    <div class="col-4 text-right">
+      <% if customer_signed_in? && controller.action_name == 'show' && workout.customer_id == current_customer.id %>
+        <%= link_to "削除する", workout_path, method: :delete %>
+      <% end %>
+    </div>
   </div>
   <div class= "row">
     <%= link_to workout_path(workout.id), class: "font-weight-bold link" do %>

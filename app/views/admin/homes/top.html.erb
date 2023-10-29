@@ -1,11 +1,21 @@
-<h3>みんなのトレーニング</h3>
-<%= link_to "タグ一覧へ", admin_tags_path %>
-<table>
-  <% @workouts.each do |workout| %>
-    <tr>
-      <td>
-        <%= render "admin/shared/workout_post", workout: workout %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h3>みんなのトレーニング</h3>
+    </div>
+    <div class="col-6 d-flex align-items-end justify-content-end">
+      <%= link_to "タグ管理画面へ", admin_tags_path %>
+    </dev>
+  </div>
+  <div class="row">
+    <table class="table">
+      <% @workouts.each do |workout| %>
+        <tr>
+          <td>
+            <%= render "admin/shared/workout_post", workout: workout %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

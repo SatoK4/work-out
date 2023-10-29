@@ -1,12 +1,16 @@
 <div class="container">
   <div class="row">
-    <%= link_to whispers_customer_path(whisper.customer_id), class: "link" do %>
-      <%= render "public/shared/icon", customer: whisper.customer %>
-      <%= whisper.customer.nickname %>
-    <% end %>
-    <% if customer_signed_in? && controller.action_name == 'show' && whisper.customer_id == current_customer.id %>
-      <%= link_to "削除する", whisper_path, class: "text-right", method: :delete %>
-    <% end %>
+    <div class="col-8">
+      <%= link_to whispers_customer_path(whisper.customer_id), class: "link" do %>
+        <%= render "public/shared/icon", customer: whisper.customer %>
+        <%= whisper.customer.nickname %>
+      <% end %>
+    </div>
+    <div class="col-4 text-right">
+      <% if customer_signed_in? && controller.action_name == 'show' && whisper.customer_id == current_customer.id %>
+        <%= link_to "削除する", whisper_path, method: :delete %>
+      <% end %>
+    </div>
   </div>
   <div class="row">
     <%= link_to whisper_path(whisper.id), class: "link" do %>
