@@ -1,19 +1,19 @@
 <div class="container pt-3">
   <div class="row">
-    <div>
+    <div class="form-group">
       <%= form_with model: [whisper, whisper_comment] do |f| %>
-      <div class="col-xs-8">
-        <%= f.text_area :comment, class: "form-control", cols: '50', placeholder: "コメントを記入してください。" %>
-      </div>
-      <div class="col-xs-4">
-        <%= f.submit "送信する" %>
-      </div>
+        <div class="col-xs-8">
+          <%= f.text_area :comment, class: "form-control", cols: '50', placeholder: "コメントを記入してください。" %>
+        </div>
+        <div class="col-xs-4">
+          <%= f.submit "送信する", class: "btn btn-secondary" %>
+        </div>
       <% end %>
     </div>
   </div>
 
   <div class="row">
-    <table class="table table_borderd", style="table-layout:fixed;width:100%;">
+    <table class="table", style="table-layout:fixed;width:100%;">
       <% whisper.whisper_comments.each do |whisper_comment| %>
         <tr>
           <td class="col-3">
@@ -26,7 +26,7 @@
           <td class="col-2"><%= l whisper_comment.created_at, format: :short %></td>
           <td class="col-2">
             <% if customer_signed_in? && whisper_comment.customer_id == current_customer.id %>
-              <%= link_to "コメントを削除", whisper_whisper_comment_path(whisper_comment.whisper, whisper_comment), method: :delete %>
+              <%= link_to "コメントを削除", whisper_whisper_comment_path(whisper_comment.whisper, whisper_comment), class: "btn btn-sm btn-danger", method: :delete %>
             <% end %>
           </td>
         </tr>

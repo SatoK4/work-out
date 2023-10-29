@@ -29,16 +29,16 @@
 <div class="row my-2">
   <% if customer_signed_in? && customer.id == current_customer.id %>
     <div class="col-1"></div>
-    <div class="col-3 text-center"><%= link_to "つぶやき一覧", whispers_customer_path, class: "h4 font-weight-bold" %></div>
-    |
     <div class="col-3 text-center"><%= link_to "トレーニング一覧", workouts_customer_path, class: "h4 font-weight-bold" %></div>
+    |
+    <div class="col-3 text-center"><%= link_to "つぶやき一覧", whispers_customer_path, class: "h4 font-weight-bold" %></div>
     |
     <div class="col-3 text-center"><%= link_to "ブックマーク一覧", workout_bookmarks_customer_path, class: "h4 font-weight-bold" %></div>
     <div class="col-1"></div>
     <!--%= link_to "トレーニングリスト", workout_lists_path %>-->
   <% else %>
-    <div class="col-5 text-center"><%= link_to "つぶやき一覧", whispers_customer_path, class: "h4 font-weight-bold" %></div>
-    |
     <div class="col-5 text-center"><%= link_to "トレーニング一覧", workouts_customer_path, class: "h4 font-weight-bold" %></div>
+    |
+    <div class="col-5 text-center"><%= link_to "つぶやき一覧", whispers_customer_path, class: "h4 font-weight-bold" %></div>
   <% end %>
 </div>

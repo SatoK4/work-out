@@ -26,7 +26,7 @@
           <td class="col-2"><%= l workout_comment.created_at, format: :short %></td>
           <td class="col-2">
             <% if customer_signed_in? && workout_comment.customer_id == current_customer.id %>
-              <%= link_to "コメントを削除", workout_workout_comment_path(workout_comment.workout, workout_comment), method: :delete %>
+              <%= link_to "コメントを削除", workout_workout_comment_path(workout_comment.workout, workout_comment), class: "btn btn-sm btn-danger", method: :delete %>
             <% end %>
           </td>
         </tr>

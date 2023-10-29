@@ -6,9 +6,9 @@
         <%= workout.customer.nickname %>
       <% end %>
     </div>
-    <div class="col-4 text-right">
+    <div class="col-4 d-flex align-items-end justify-content-end">
       <% if customer_signed_in? && controller.action_name == 'show' && workout.customer_id == current_customer.id %>
-        <%= link_to "削除する", workout_path, method: :delete %>
+        <%= link_to "投稿を削除する", workout_path, class: "btn btn-sm btn-danger", method: :delete %>
       <% end %>
     </div>
   </div>
