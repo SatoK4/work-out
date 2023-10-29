@@ -19,7 +19,7 @@
   <div class= "row">
     <% if workout.images.present? %>
       <% workout.images.each do |image| %>
-        <%= image_tag image.to_s %>
+        <div class="mr-2"><%= image_tag image.to_s %></div>
       <% end %>
     <% end %>
   </div>
