@@ -3,14 +3,15 @@
   <h3 class="font-weight-bold">何をつぶやきますか？</h3>
 
   <div class="row">
-    <table class="table table-sm table-borderless">
-      <%= form_with model: @whisper do |f| %>
+
+    <%= form_with model: @whisper, url: whispers_path, method: :post do |f| %>
+      <table class="table table-sm table-borderless">
         <div class="form-group">
           <tr><td><%= f.file_field :images, multiple: true %></td></tr>
-          <tr><td><%= f.text_area :content, class: "form-control w-50", placeholder: "内容を入力してください" %></td></tr>
-          <tr><td><%= f.submit "つぶやく", class:"btn btn-primary" %></td></tr>
+          <tr><td><%= f.text_area :content, class: "form-control ", placeholder: "内容を入力してください" %></td></tr>
+          <tr><td><%= f.submit "つぶやく", class: "btn btn-primary" %></td></tr>
         </div>
-      <% end %>
-    </table>
+      </table>
+    <% end %>
   </div>
 </div>
