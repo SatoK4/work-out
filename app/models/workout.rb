@@ -5,8 +5,11 @@ class Workout < ApplicationRecord
   has_many :tags, through: :workout_tags
   has_many :workout_list_details
   has_many :workout_bookmarks, dependent: :destroy
+  
+  validates :name, presence: true
+  validates :introduction, presence: true
 
-mount_uploaders :images, ImageUploader
+  mount_uploaders :images, ImageUploader
 
   def find_bookmark(customer)
     workout_bookmarks.find_by(customer_id: customer.id)

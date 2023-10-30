@@ -1,9 +1,16 @@
 <div class="container">
-  <%= flash[:alert] %>
   <h3 class="font-weight-bold">何をつぶやきますか？</h3>
 
-  <div class="row">
+  <% if @whisper.errors.any? %>
+    <%= @whisper.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @whisper.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
+  <div class="row">
     <%= form_with model: @whisper, url: whispers_path, method: :post do |f| %>
       <table class="table table-sm table-borderless">
         <div class="form-group">

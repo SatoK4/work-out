@@ -21,9 +21,9 @@ class Admin::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @customer.update(is_deleted: !@customer.is_deleted)
     if @customer.is_deleted
-      flash[:notice] = "退会処理を実行しました。"
+      flash[:success] = "退会処理を実行しました。"
     else
-      flash[:notice] = "有効にします。"
+      flash[:success] = "有効にしました。"
     end
     redirect_to request.referer
   end

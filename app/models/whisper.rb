@@ -3,6 +3,8 @@ class Whisper < ApplicationRecord
   has_many :whisper_bookmarks, dependent: :destroy
   belongs_to :customer
 
+  validates :content, presence: true
+  
   mount_uploaders :images, ImageUploader
 
   def find_bookmark(customer)

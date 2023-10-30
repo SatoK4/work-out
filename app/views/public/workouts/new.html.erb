@@ -1,6 +1,7 @@
 <div class="container">
-  <%= flash[:alert] %>
   <h3 class="font-weight-bold">トレーニング新規投稿</h3>
+
+  <%= render "public/shared/error_messages", resource: @workout %>
 
   <div class="row">
     <%= form_with model: @workout, url: workouts_path, method: :post do |f| %>

@@ -5,7 +5,7 @@ class Admin::WorkoutsController < ApplicationController
   
   def destroy
     Workout.find(params[:id]).destroy
-    flash[:notice] = "削除しました。"
+    flash[:success] = "削除しました。"
     redirect_to admin_root_path
   end
 end

@@ -1,7 +1,5 @@
 <div class="container">
   <h3 class="font-weight-bold">登録済みタグ一覧</h3>
-  <%= flash[:notice] %>
-  <%= flash[:alert] %>
   <div class="row">
     <%= form_with model: @tag, url: admin_tags_path, method: :post do |f| %>
       <table class="table table-sm">
