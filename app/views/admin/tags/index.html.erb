@@ -1,23 +1,22 @@
 <div class="container">
-  <h3>登録済みタグ一覧</h3>
+  <h3 class="font-weight-bold">登録済みタグ一覧</h3>
   <%= flash[:notice] %>
   <%= flash[:alert] %>
   <div class="row">
     <%= form_with model: @tag, url: admin_tags_path, method: :post do |f| %>
-      <table class="table table-dark">
+      <table class="table table-sm">
         <tbody>
           <tr>
-            <td>タグ名</td>
-            <td><%= f.text_field :tag_name, :size=>"35" %></td>
-            <td colspan="2"></td>
-            <td><%= f.submit "新規登録" %></td>
+            <td class="align-middle">登録するタグ名</td>
+            <td colspan="3"><%= f.text_field :tag_name, :size=>"35", class: "form-control" %></td>
+            <td class="align-middle"><%= f.submit "新規登録", class: "btn btn-sm btn-primary" %></td>
           </tr>
         </tbody>
     <% end %>
         <thead>
           <tr>
-            <th class="text-danger">タグ</th>
-            <th colspan="6"></th>
+            <th class="text-center">タグ</th>
+            <th colspan="4"></th>
           </tr>
         </thead>
         <tbody>
@@ -26,7 +25,7 @@
               <td><%= tag.tag_name %></td>
               <td colspan="3"></td>
               <td>
-                <%= link_to "タグを削除する", admin_tag_path(tag.id), method: :delete, "data-confirm" => "このタグを消去した場合、投稿者のタグも同時に削除されます。本当にタグを削除しますか？" %>
+                <%= link_to "タグを削除する", admin_tag_path(tag.id), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "このタグを消去した場合、投稿者のタグも同時に削除されます。本当にタグを削除しますか？" %>
               </td>
             </tr>
           <% end %>
