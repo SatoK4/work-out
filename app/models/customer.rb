@@ -12,6 +12,8 @@ class Customer < ApplicationRecord
   has_many :whisper_comments, dependent: :destroy
   has_many :whisper_bookmarks, dependent: :destroy
 
+  validates :nickname, presence: true
+
   mount_uploader :image, ImageUploader
 
   def status
@@ -20,5 +22,9 @@ class Customer < ApplicationRecord
     else
       "無効"
     end
+  end
+  
+  def active_for_authentication?
+    super && (is_deleted == false)
   end
 end

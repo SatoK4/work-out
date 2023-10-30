@@ -12,6 +12,10 @@ ja:
         introduction: トレーニング内容
       whisper:
         content: つぶやき内容
+      customer:
+        nickname: ニックネーム
+        email: メールアドレス
+        password: パスワード
   date:
     abbr_day_names:
     - 日
@@ -214,3 +218,5 @@ ja:
     sessions:
       signed_in: "ログインしました。"
       signed_out: "ログアウトしました。"
+    registrations:
+      signed_up: 登録しました。
