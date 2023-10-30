@@ -4,13 +4,13 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :workouts, dependent: :destroy
-  has_many :workout_comments, dependent: :destroy
-  has_many :workout_lists, dependent: :destroy
-  has_many :workout_bookmarks, dependent: :destroy
-  has_many :whispers, dependent: :destroy
-  has_many :whisper_comments, dependent: :destroy
-  has_many :whisper_bookmarks, dependent: :destroy
+  has_many :workouts
+  has_many :workout_comments
+  has_many :workout_lists
+  has_many :workout_bookmarks
+  has_many :whispers
+  has_many :whisper_comments
+  has_many :whisper_bookmarks
 
   validates :nickname, presence: true
 
