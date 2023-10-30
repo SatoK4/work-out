@@ -24,7 +24,7 @@ class Public::WhispersController < ApplicationController
   end
 
   def destroy
-    Whisper.find(params[:id]).delete
+    Whisper.find(params[:id]).destroy
     flash[:success] = "削除しました。"
     redirect_to whispers_customer_path(current_customer.id)
   end
