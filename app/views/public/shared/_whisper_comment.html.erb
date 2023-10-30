@@ -2,7 +2,7 @@
   <% if customer_signed_in? %>
     <div class="row">
       <div class="form-group">
-        <%= form_with model: [whisper, whisper_comment] do |f| %>
+        <%= form_with model: [whisper, whisper_comment], class: "row align-items-end" do |f| %>
           <div class="col-xs-8">
             <%= f.text_area :comment, class: "form-control", cols: '50', placeholder: "コメントを記入してください。" %>
           </div>

@@ -13,64 +13,108 @@
   </head>
 
   <body>
-    <header>
-      <nav class="navbar">
-        <div class="container">
-          <% if admin_signed_in? %>
-            <div class="row">
-              <%= link_to admin_root_path, class: "navbar-brand link" do %>
-                みんなで<i class="fa-solid fa-dumbbell"></i>WorkOut
-              <% end %>
-              <%= image_tag "no-icon.png", size: "50x50" %>
-              <p>管理アカウント</p>
-              <ul class="navbar-nav"><!--ドロップダウンメニュー-->
-                <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, class:"nav-link", method: :delete %></li>
-              </ul>
-            </div>
-            <div class="row">
-              <%= link_to "トレーニング一覧", admin_root_path %>
-              <%= link_to "つぶやき一覧", admin_whispers_path %>
-              <%= link_to "ユーザー一覧", admin_customers_path %>
-            </div>
-          <% elsif customer_signed_in? %>
-            <div class="row">
+    <header class="mb-2" style="background-color: #e3f2fd;">
+      <div class="container">
+        <% if admin_signed_in? %>
+          <div class="row">
+            <div class="col-8 d-flex align-items-center justify-content-center">
               <%= link_to root_path, class: "navbar-brand link" do %>
-                みんなで<i class="fa-solid fa-dumbbell"></i>WorkOut
+                <p class="h3">みんなで<i class="fa-solid fa-dumbbell"></i>WorkOut</p>
               <% end %>
-              <% if current_customer.image.present? %>
-                <%= image_tag current_customer.image_url(:icon) %>
-              <% else %>
-                <%= image_tag 'no-icon.png', size: "50x50" %>
-              <% end %>
-              <%= current_customer.nickname %>
-              <ul><!--ドロップダウンメニュー-->
-                <li><%= link_to "マイページ", workouts_customer_path(current_customer.id) %></li>
-                <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
-              </ul>
             </div>
-            <div class="row">
+            <div class="col-4 text-center">
+              <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= image_tag "no-icon.png", size: "50x50" %>
+                  管理アカウント
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <%= link_to "ログアウト", destroy_admin_session_path, class: "dropdown-item", method: :delete %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4 text-center h4">
               <%= link_to "トレーニング一覧", workouts_path %>
+            </div>
+            <div class="col-1 text-center h4 font-weight-light">|</div>
+            <div class="col-3 text-center h4">
               <%= link_to "つぶやき一覧", whispers_path %>
             </div>
-          <% else %>
-            <div class="row">
+            <div class="col-1 text-center h4 font-weight-light">|</div>
+            <div class="col-3"><%= link_to "ユーザー一覧", admin_customers_path %></div>
+          </div>
+
+        <% elsif customer_signed_in? %>
+          <div class="row">
+            <div class="col-8 d-flex align-items-center justify-content-center">
               <%= link_to root_path, class: "navbar-brand link" do %>
-                みんなで<i class="fa-solid fa-dumbbell"></i>WorkOut
+                <p class="h3">みんなで<i class="fa-solid fa-dumbbell"></i>WorkOut</p>
               <% end %>
-              <%= image_tag "no-icon.png", size: "50x50" %>
-              <p>ログインしてください</p>
-              <ul><!--ドロップダウンメニュー-->
-                <li><%= link_to "新規登録", new_customer_registration_path %></li>
-                <li><%= link_to "ログイン", new_customer_session_path %></li>
-              </ul>
             </div>
-            <div class="row">
+            <div class="col-4 text-center">
+              <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <% if current_customer.image.present? %>
+                    <%= image_tag current_customer.image_url(:icon) %>
+                  <% else %>
+                    <%= image_tag 'no-icon.png', size: "50x50" %>
+                  <% end %>
+                  <%= current_customer.nickname %>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <%= link_to "マイページ", workouts_customer_path(current_customer.id), class: "dropdown-item" %>
+                  <%= link_to "ログアウト", destroy_customer_session_path, class: "dropdown-item", method: :delete %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-5 text-center h4">
               <%= link_to "トレーニング一覧", workouts_path %>
+            </div>
+            <div class="col-2 text-center h4 font-weight-light">|</div>
+            <div class="col-5 text-center h4">
               <%= link_to "つぶやき一覧", whispers_path %>
             </div>
-          <% end %>
-        </div>
-      </nav>
+          </div>
+
+        <% else %>
+          <div class="row">
+            <div class="col-8 d-flex align-items-center justify-content-center">
+              <%= link_to root_path, class: "navbar-brand link" do %>
+                <p class="h3">みんなで<i class="fa-solid fa-dumbbell"></i>WorkOut</p>
+              <% end %>
+            </div>
+
+            <div class="col-4 text-center">
+              <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= image_tag "no-icon.png", size: "50x50" %>
+                  ログインしてください
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <%= link_to "新規登録", new_customer_registration_path, class: "dropdown-item" %>
+                  <%= link_to "ログイン", new_customer_session_path, class: "dropdown-item" %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-5 text-center h4">
+              <%= link_to "トレーニング一覧", workouts_path %>
+            </div>
+            <div class="col-2 text-center h4 font-weight-light">|</div>
+            <div class="col-5 text-center h4">
+              <%= link_to "つぶやき一覧", whispers_path %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </header>
     <main>
       <% flash.each do |message_type, message| %>
