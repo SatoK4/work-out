@@ -18,7 +18,7 @@
         <% if admin_signed_in? %>
           <div class="row">
             <div class="col-8 d-flex align-items-center justify-content-center">
-              <%= link_to root_path, class: "navbar-brand link" do %>
+              <%= link_to admin_root_path, class: "navbar-brand link" do %>
                 <p class="h3">みんなで<i class="fa-solid fa-dumbbell"></i>WorkOut</p>
               <% end %>
             </div>
@@ -44,7 +44,7 @@
               <%= link_to "つぶやき一覧", whispers_path %>
             </div>
             <div class="col-1 text-center h4 font-weight-light">|</div>
-            <div class="col-3"><%= link_to "ユーザー一覧", admin_customers_path %></div>
+            <div class="col-3 text-center h4"><%= link_to "ユーザー一覧", admin_customers_path %></div>
           </div>
 
         <% elsif customer_signed_in? %>
