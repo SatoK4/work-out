@@ -1,4 +1,5 @@
 class Public::WhispersController < ApplicationController
+  before_action :authenticate_customer!, only: [:new]
   def new
     @whisper = Whisper.new
   end

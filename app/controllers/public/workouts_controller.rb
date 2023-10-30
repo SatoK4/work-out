@@ -1,4 +1,5 @@
 class Public::WorkoutsController < ApplicationController
+  before_action :authenticate_customer!, only: [:new]
   def new
     @workout = Workout.new
   end
