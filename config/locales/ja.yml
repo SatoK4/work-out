@@ -215,6 +215,7 @@ ja:
     failure:
       invalid: "ログインに失敗しました。メールアドレスまたはパスワードが間違っています。"
       unauthenticated: "アクセスするにはログインしてください。"
+      not_found_in_database: "このメールアドレスは登録されていません。"
     sessions:
       signed_in: "ログインしました。"
       signed_out: "ログアウトしました。"
