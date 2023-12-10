@@ -16,11 +16,11 @@ class Public::WorkoutsController < ApplicationController
   end
 
   def index
-    @workouts = params[:tag_id].present? ? Tag.find(params[:tag_id]).workouts : Workout.all
+    @workouts = params[:tag_id].present? ? Tag.find(params[:tag_id]).workouts : Workout.page(params[:page]).per(10)
     if params[:keyword]
-      @workouts = @workouts.search(params[:keyword]).all
+      @workouts = @workouts.search(params[:keyword]).page(params[:page]).per(10)
     else
-      @workouts = @workouts.all
+      @workouts = @workouts.page(params[:page]).per(10)
     end
     @keyword = params[:keyword]
   end

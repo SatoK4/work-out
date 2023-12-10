@@ -1,7 +1,4 @@
 class Public::WorkoutBookmarksController < ApplicationController
-  def index
-  end
-
   def create
     @bookmark = WorkoutBookmark.new(bookmark_params.merge(:customer_id=>current_customer.id))
     if @bookmark.valid?
