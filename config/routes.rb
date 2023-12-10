@@ -47,6 +47,4 @@ Rails.application.routes.draw do
     get '/:id/workouts'     => 'customers#workout',     as: "customer_workouts"
     patch 'withdrawal/:id'  => 'customers#withdrawal',  as: "customer_withdrawal"
   end
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
