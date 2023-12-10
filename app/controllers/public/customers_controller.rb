@@ -1,14 +1,14 @@
 class Public::CustomersController < ApplicationController
   def whisper
     @customer = Customer.find(params[:id])
-    @whispers = @customer.whispers.page(params[:page]).per(10)
+    @whispers = @customer.whispers.page(params[:page]).per(15)
   end
 
   def whisper_bookmark
     @customer = Customer.find(current_customer.id)
     bookmarks = WhisperBookmark.where(customer_id: current_customer.id).pluck(:whisper_id)
     @whisper_bookmarks = Whisper.find(bookmarks)
-    @whisper_bookmarks = Kaminari.paginate_array(@whisper_bookmarks).page(params[:page]).per(10)
+    @whisper_bookmarks = Kaminari.paginate_array(@whisper_bookmarks).page(params[:page]).per(15)
   end
 
   def workout

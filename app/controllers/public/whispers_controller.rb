@@ -16,7 +16,7 @@ class Public::WhispersController < ApplicationController
   end
 
   def index
-    @whispers = Whisper.page(params[:page]).per(10)
+    @whispers = Whisper.page(params[:page]).per(15)
   end
 
   def show
