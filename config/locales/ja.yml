@@ -223,8 +223,8 @@ ja:
       signed_up: 登録しました。
   views:
     pagination:
-      first: <i class="fa-solid fa-angles-left"></i>
-      last: <i class="fa-solid fa-angles-right"></i>
-      previous: <i class="fa-solid fa-chevron-left"></i>
-      next: <i class="fa-solid fa-chevron-right"></i>
-      truncate: "..."
+      first:      "&laquo;"
+      last:       "&raquo;"
+      previous:   "&lsaquo;"
+      next:       "&rsaquo;"
+      truncate:   "..."
