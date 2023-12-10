@@ -16,7 +16,7 @@
 
   <div class="row">
     <table class="table", style="table-layout:fixed;width:100%;">
-      <% whisper.whisper_comments.each do |whisper_comment| %>
+      <% whisper.whisper_comments.page(params[:page]).per(20).each do |whisper_comment| %>
         <tr>
           <td class="col-3">
             <%= link_to whispers_customer_path(whisper_comment.customer_id), class: "link" do %>
@@ -34,5 +34,6 @@
         </tr>
       <% end %>
     </table>
+    <%= paginate whisper.whisper_comments.page(params[:page]).per(20) %>
   </div>
 </div>
