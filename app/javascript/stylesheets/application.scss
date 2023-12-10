@@ -21,3 +21,20 @@
   color: #930403;
   border: solid 1px #930403;
 }
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 20px;
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 20px;
+}
