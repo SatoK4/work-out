@@ -1,7 +1,4 @@
 class Public::WhisperBookmarksController < ApplicationController
-  def index
-  end
-
   def create
     @bookmark = WhisperBookmark.new(bookmark_params.merge(:customer_id=>current_customer.id))
     if @bookmark.valid?
