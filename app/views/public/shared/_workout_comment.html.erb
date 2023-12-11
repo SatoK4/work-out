@@ -17,7 +17,7 @@
   <div class="row">
     <table class="table", style="table-layout:fixed;width:100%;">
       <!--変数[workout_comment]の定義-->
-      <% workout_comment = workout.workout_comments.page(params[:page]).per(2).order(created_at: :desc) %>
+      <% workout_comment = workout.workout_comments.page(params[:page]).per(20).order(created_at: :desc) %>
       
       <% workout_comment.each do |workout_comment| %>
         <tr>
