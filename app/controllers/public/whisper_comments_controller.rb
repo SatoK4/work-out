@@ -2,9 +2,13 @@ class Public::WhisperCommentsController < ApplicationController
   def create
     whisper = Whisper.find(params[:whisper_id])
     comment = WhisperComment.new(whisper_comment_params.merge(:customer_id=>current_customer.id, :whisper_id=>whisper.id))
-    comment.save
-    flash[:success] = "コメントをしました。"
-    redirect_to whisper_path(whisper.id)
+    if  comment.save
+      flash[:success] = "コメントをしました。"
+      redirect_to whisper_path(whisper.id)
+    else
+      flash[:alert] = "投稿に失敗しました。"
+      redirect_to request.referer
+    end
   end
 
   def destroy
