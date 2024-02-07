@@ -15,6 +15,12 @@ class Public::WorkoutsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+  end
+
   def index
     @workouts = params[:tag_id].present? ? Tag.find(params[:tag_id]).workouts : Workout.page(params[:page]).per(10).order(created_at: :desc)
     if params[:keyword]

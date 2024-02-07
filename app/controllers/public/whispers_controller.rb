@@ -15,6 +15,21 @@ class Public::WhispersController < ApplicationController
     end
   end
 
+  def edit
+    @whisper = Whisper.find(params[:id])
+  end
+
+  def update
+    @whisper = Whisper.find(params[:id])
+    if @whisper.update(whisper_params)
+      flash[:success] = "変更しました。"
+      redirect_to whisper_path
+    else
+      flash.now[:alert] = "変更できませんでした。"
+      render :edit
+    end
+  end
+
   def index
     @whispers = Whisper.page(params[:page]).per(15).order(created_at: :desc)
   end
