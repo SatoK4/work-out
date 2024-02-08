@@ -23,7 +23,7 @@ class Public::WhispersController < ApplicationController
     @whisper = Whisper.find(params[:id])
     if @whisper.update(whisper_params)
       flash[:success] = "変更しました。"
-      redirect_to whisper_path
+      redirect_to whisper_path(@whisper.id)
     else
       flash.now[:alert] = "変更できませんでした。"
       render :edit
