@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3 class="font-weight-bold">編集画面</h3>
+    </div>
+  </div>
+  <%= form_with model: @workout, url: workout_path, method: :patch do |f| %>
+    <div class="row">
+      <table class="table table-sm table-borderless">
+        <div class="form-group">
+          <tr>
+            <td style="width: 20%" class="text-center"><%= f.label :イメージ画像 %></td>
+            <td><%= f.file_field :images, multiple: true %></td>
+          </tr>
+        </div>
+        <div class="form-group">
+          <tr>
+            <td style="width: 20%" class="text-center"><%= f.label :トレーニング名 %></td>
+            <td><%= f.text_field :name, class: "form-control w-75", placeholder: "トレーニング名を入力してください。" %></td>
+          </tr>
+        </div>
+        <div class="form-group">
+          <tr>
+            <td style="width: 20%" class="text-center"><%= f.label :トレーニング内容 %></td>
+            <td><%= f.text_area :introduction, class: "form-control w-75", placeholder: "トレーニング内容を入力してください。" %></td>
+          </tr>
+        </div>
+      </table>
+      <div class="col-12">
+        <div class="form-group form-check">
+          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
+            <%= tag.label do %>
+              <%= tag.check_box %>
+              <%= tag.text %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-right">
+        <%= f.submit "変更を保存する", class: "btn btn-sm btn-primary" %>
+      </div>
+      <div class="col">
+        <%= link_to "詳細画面へ戻る", :back, class: "btn btn-sm btn-secondary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

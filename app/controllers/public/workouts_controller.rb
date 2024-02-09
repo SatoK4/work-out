@@ -16,9 +16,18 @@ class Public::WorkoutsController < ApplicationController
   end
 
   def edit
+    @workout = Workout.find(params[:id])
   end
 
   def update
+    @workout = Workout.find(params[:id])
+    if @workout.update(workout_params)
+      flash[:success] = "変更しました。"
+      redirect_to workout_path(@workout.id)
+    else
+      flash.now[:alert] = "変更できませんでした。"
+      render :edit
+    end
   end
 
   def index
