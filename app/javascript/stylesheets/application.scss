@@ -22,6 +22,12 @@
   border: solid 1px #930403;
 }
 
+.flash-message.notice {
+  background-color: #bcdfff;
+  color: #0067C0;
+  border: solid 1px #0067C0;
+}
+
 /*ページネーション自体のデザイン*/
 .pagination>li>a {
   border: none;
