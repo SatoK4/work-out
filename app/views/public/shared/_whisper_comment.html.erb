@@ -31,6 +31,13 @@
           <td class="col-2"><%= l whisper_comment.created_at, format: :short %></td>
           <td class="col-2">
             <% if customer_signed_in? && whisper_comment.customer_id == current_customer.id %>
+              <span data-comment-id=<%= whisper_comment.id %> class="js-edit-comment-button">
+                <i class="fas fa-edit"></i>
+              </span>
+              <div id="js-comment-<%= whisper_comment.id %>">
+                <%= render "public/shared/js_comment", comment: whisper_comment %>
+              </div>
+              
               <%= link_to "コメントを削除", whisper_whisper_comment_path(whisper_comment.whisper, whisper_comment), class: "btn btn-sm btn-danger", method: :delete %>
             <% end %>
           </td>
