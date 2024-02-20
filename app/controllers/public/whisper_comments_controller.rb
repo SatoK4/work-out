@@ -16,6 +16,10 @@ class Public::WhisperCommentsController < ApplicationController
     flash[:success] = "削除しました。"
     redirect_to request.referer
   end
+  
+  def update
+    @comment.reload unless @comment.update(whisper_comment_params)
+  end
 
   private
   def whisper_comment_params
