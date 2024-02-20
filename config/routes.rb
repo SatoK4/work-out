@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   }
   scope module: :public do
     resources :whispers,            only:[:new, :create, :index, :edit, :update, :show, :destroy] do
-      resources :whisper_comments,  only:[:create, :destroy]
+      resources :whisper_comments,  only:[:create, :destroy, :update]
       resources :whisper_bookmarks, only:[:create, :destroy]
     end
 
