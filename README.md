@@ -18,6 +18,7 @@
 - トレーニングのメニューを検索する時
 - おすすめのトレーニングを紹介する時
 - 行ったトレーニングを投稿する時(日記のようなもの)
+- コミュニケーションを取りたい時
 ## 設計書
 [実装機能リスト](https://docs.google.com/spreadsheets/d/1pS_6PR93Fgxn8i6bVbiRgjvtvYhOgdIHasfyJwWDuyw/edit?usp=drive_link)<br>
 [テーブル定義書](https://docs.google.com/spreadsheets/d/1Tn0VzOWeL8379oKc1DL3i1fjqwR3CkRocsDzG_ZF4d4/edit?usp=drive_link)<br>
@@ -34,5 +35,4 @@
 - IDE：Cloud9
 ​
 ## 使用素材
-- photoAC(https://www.photo-ac.com/main/search?q=%E7%AD%8B%E3%83%88%E3%83%AC&srt=dlrank&qt=&p=1&pt=A)
-折りたたむ
+[photoAC](https://www.photo-ac.com/main/search?q=%E7%AD%8B%E3%83%88%E3%83%AC&srt=dlrank&qt=&p=1&pt=A)
