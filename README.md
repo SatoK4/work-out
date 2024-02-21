@@ -25,7 +25,7 @@
 [ワイヤーフレーム](https://drive.google.com/file/d/1SPJkFxm516WSFjjnGZHNj2Fa5sZPfBVJ/view?usp=drive_link)<br>
 [WBS](https://docs.google.com/spreadsheets/d/1VtbpwUdN42POOawWL5ohAphxGm8zTsZhp-tqEhjdCgE/edit?usp=drive_link)<br>
 [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1uWWfltW_loDgggp8UlDDzgyA5a24iO6FJ0uqKwXTtrY/edit?usp=drive_link)<br>
-[ER図](https://drive.google.com/file/d/1hSUPpIJSx352voRIQFscA9lwXuyY2MdS/view?usp=drive_link)<br>
+[ER図](https://drive.google.com/file/d/17_W7-h73Bs33b4ERrg_Gv6mxqRCYP0VB/view?usp=drive_link)<br>
 [画面遷移図](https://drive.google.com/file/d/1NGRlG798Yoe4S8nwK1lUfUeaOpFeQPYV/view?usp=drive_link)<br>
 ## 開発環境
 - OS：Linux(CentOS)
